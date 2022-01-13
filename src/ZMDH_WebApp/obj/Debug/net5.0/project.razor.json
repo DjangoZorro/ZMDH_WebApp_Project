@@ -15629,8 +15629,23 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "g:\\My Drive\\old desktop stuff\\HHS\\WDPR\\WDPRProject\\src\\ZMDH_WebApp\\Views\\Shared\\_LoginPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_LoginPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\My Drive\\old desktop stuff\\HHS\\WDPR\\WDPRProject\\src\\ZMDH_WebApp\\Areas\\Identity\\Pages\\_ViewImports.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "g:\\My Drive\\old desktop stuff\\HHS\\WDPR\\WDPRProject\\src\\ZMDH_WebApp\\Views\\_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\My Drive\\old desktop stuff\\HHS\\WDPR\\WDPRProject\\src\\ZMDH_WebApp\\Areas\\Identity\\Pages\\Account\\Logout.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Logout.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15639,13 +15654,38 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "g:\\My Drive\\old desktop stuff\\HHS\\WDPR\\WDPRProject\\src\\ZMDH_WebApp\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "g:\\My Drive\\old desktop stuff\\HHS\\WDPR\\WDPRProject\\src\\ZMDH_WebApp\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
     },
     {
+      "FilePath": "g:\\My Drive\\old desktop stuff\\HHS\\WDPR\\WDPRProject\\src\\ZMDH_WebApp\\Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "g:\\My Drive\\old desktop stuff\\HHS\\WDPR\\WDPRProject\\src\\ZMDH_WebApp\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\My Drive\\old desktop stuff\\HHS\\WDPR\\WDPRProject\\src\\ZMDH_WebApp\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\My Drive\\old desktop stuff\\HHS\\WDPR\\WDPRProject\\src\\ZMDH_WebApp\\Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\My Drive\\old desktop stuff\\HHS\\WDPR\\WDPRProject\\src\\ZMDH_WebApp\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Register.cshtml",
       "FileKind": "mvc"
     },
     {
