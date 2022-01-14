@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "G:\\My Drive\\old desktop stuff\\HHS\\WDPR\\WDPRProject\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj": {}
+    "D:\\IdeaProjects\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj": {}
   },
   "projects": {
-    "G:\\My Drive\\old desktop stuff\\HHS\\WDPR\\WDPRProject\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj": {
+    "D:\\IdeaProjects\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\My Drive\\old desktop stuff\\HHS\\WDPR\\WDPRProject\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj",
+        "projectUniqueName": "D:\\IdeaProjects\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj",
         "projectName": "ZMDH_WebApp",
-        "projectPath": "G:\\My Drive\\old desktop stuff\\HHS\\WDPR\\WDPRProject\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj",
-        "packagesPath": "C:\\Users\\Gebruiker\\.nuget\\packages\\",
-        "outputPath": "G:\\My Drive\\old desktop stuff\\HHS\\WDPR\\WDPRProject\\src\\ZMDH_WebApp\\obj\\",
+        "projectPath": "D:\\IdeaProjects\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj",
+        "packagesPath": "C:\\Users\\Djelies\\.nuget\\packages\\",
+        "outputPath": "D:\\IdeaProjects\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Gebruiker\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Djelies\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -70,9 +70,17 @@
               "target": "Package",
               "version": "[5.0.0, )"
             },
+            "Microsoft.Owin": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[5.0.0, )"
+            },
+            "Owin": {
+              "target": "Package",
+              "version": "[*, )"
             }
           },
           "imports": [
