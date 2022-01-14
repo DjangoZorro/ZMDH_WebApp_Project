@@ -28,15 +28,6 @@ namespace ZMDH_WebApp.Controllers
             return View();
         }
 
-<<<<<<< HEAD
-        public IActionResult Chat()
-=======
-        public IActionResult Contact()
->>>>>>> origin/dev
-        {
-            return View();
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
