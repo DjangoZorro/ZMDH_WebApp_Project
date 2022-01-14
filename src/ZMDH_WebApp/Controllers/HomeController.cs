@@ -28,11 +28,13 @@ namespace ZMDH_WebApp.Controllers
             return View();
         }
 
-<<<<<<< HEAD
+
         public IActionResult Chat()
-=======
+        {
+            return View();
+        }
+
         public IActionResult Contact()
->>>>>>> origin/dev
         {
             return View();
         }
