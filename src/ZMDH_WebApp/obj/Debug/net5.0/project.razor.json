@@ -15617,6 +15617,7 @@
     "CSharpLanguageVersion": 900
   },
   "RootNamespace": "ZMDH_WebApp",
+<<<<<<< HEAD
   "Documents": [
     {
       "FilePath": "d:\\IdeaProjects\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
@@ -15699,5 +15700,8 @@
       "FileKind": "mvc"
     }
   ],
+=======
+  "Documents": [],
+>>>>>>> origin/dev
   "SerializationFormat": "0.2"
 }

@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "D:\\IdeaProjects\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj": {}
   },
   "projects": {
@@ -12,14 +13,37 @@
         "projectPath": "D:\\IdeaProjects\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj",
         "packagesPath": "C:\\Users\\Djelies\\.nuget\\packages\\",
         "outputPath": "D:\\IdeaProjects\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\obj\\",
+=======
+    "C:\\Users\\Gebruiker\\Desktop\\WDPRProject\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Gebruiker\\Desktop\\WDPRProject\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Gebruiker\\Desktop\\WDPRProject\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj",
+        "projectName": "ZMDH_WebApp",
+        "projectPath": "C:\\Users\\Gebruiker\\Desktop\\WDPRProject\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj",
+        "packagesPath": "C:\\Users\\Gebruiker\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Gebruiker\\Desktop\\WDPRProject\\src\\ZMDH_WebApp\\obj\\",
+>>>>>>> origin/dev
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
+<<<<<<< HEAD
           "C:\\Users\\Djelies\\AppData\\Roaming\\NuGet\\NuGet.Config"
+=======
+          "C:\\Users\\Gebruiker\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+>>>>>>> origin/dev
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

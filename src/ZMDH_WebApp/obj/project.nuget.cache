@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "FzsymvyYvPMaGRC1e4pTevE22qQqV6RwcyZ+3u2QaD+eT6n4GC24oRjpnBqwDlbJGhzqWDUgjuDOhfxJ+ljgfg==",
   "success": true,
   "projectFilePath": "D:\\IdeaProjects\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj",
+=======
+  "dgSpecHash": "8jPzBTEVKAPtP0jEY5vgVow2I6C+hA41RptrVofgGZ9x1crEt3w+b3bs4Z+FAvXjgxvPtq1MgBkhrrfo97QKzQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Gebruiker\\Desktop\\WDPRProject\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj",
+>>>>>>> origin/dev
   "expectedPackageFiles": [
     "C:\\Users\\Djelies\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Djelies\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.0\\microsoft.aspnetcore.cryptography.internal.5.0.0.nupkg.sha512",

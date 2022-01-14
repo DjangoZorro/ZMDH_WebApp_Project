@@ -73,7 +73,3 @@ _[Ss]cripts
 *.nupkg
 *.ncrunchsolution
 *.dot[Cc]over
-src/ZMDH_WebApp/obj/Debug/net5.0/ZMDH_WebApp.assets.cache
-src/ZMDH_WebApp/obj/Debug/net5.0/ZMDH_WebApp.assets.cache
-*.cache
-*.editorconfig
