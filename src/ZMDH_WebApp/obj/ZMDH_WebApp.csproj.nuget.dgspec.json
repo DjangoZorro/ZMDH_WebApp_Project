@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "G:\\My Drive\\old desktop stuff\\HHS\\WDPR\\WDPRProject\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj": {}
+    "C:\\Users\\Gebruiker\\Desktop\\WDPRProject\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj": {}
   },
   "projects": {
-    "G:\\My Drive\\old desktop stuff\\HHS\\WDPR\\WDPRProject\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj": {
+    "C:\\Users\\Gebruiker\\Desktop\\WDPRProject\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\My Drive\\old desktop stuff\\HHS\\WDPR\\WDPRProject\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj",
+        "projectUniqueName": "C:\\Users\\Gebruiker\\Desktop\\WDPRProject\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj",
         "projectName": "ZMDH_WebApp",
-        "projectPath": "G:\\My Drive\\old desktop stuff\\HHS\\WDPR\\WDPRProject\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj",
+        "projectPath": "C:\\Users\\Gebruiker\\Desktop\\WDPRProject\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj",
         "packagesPath": "C:\\Users\\Gebruiker\\.nuget\\packages\\",
-        "outputPath": "G:\\My Drive\\old desktop stuff\\HHS\\WDPR\\WDPRProject\\src\\ZMDH_WebApp\\obj\\",
+        "outputPath": "C:\\Users\\Gebruiker\\Desktop\\WDPRProject\\src\\ZMDH_WebApp\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Gebruiker\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Gebruiker\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

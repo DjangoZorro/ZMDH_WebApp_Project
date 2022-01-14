@@ -7,6 +7,31 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
+
+<style>
+    .wrap-container {
+        position: relative;
+        color: white;
+    }
+
+ .image-container {
+    width: 100vw;
+    position: relative;
+    left: 50%;  
+    margin-left: -50vw;
+    object-fit: cover;
+    height: 400px;
+    filter: brightness(50%);
+ }
+
+ .overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+ }
+</style>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -31,12 +56,21 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="container-fluid">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <div class="wrap-container mt-5">
+        <div class="mx-auto">
+            <img src="https://w.wallhaven.cc/full/e7/wallhaven-e7ek7k.jpg" class="image-container" alt="Gathering-photo">
+            <div class="overlay">
+                <h2>Onze deskundigen hebben al meer dan 10 jaar ervaring!</h2>
+            </div>
+        </div>
+    </div>
+
+    <footer class="border-top footer text-muted mt-5">
         <div class="container">
             &copy; 2022 - ZMDH_WebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+	  <!-- <UserSecretsId>ZMDH-WebApp-123</UserSecretsId>
+	  <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel> -->
   </PropertyGroup>
 
   <ItemGroup>
