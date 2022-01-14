@@ -14,27 +14,31 @@
         color: white;
     }
 
- .image-container {
-    width: 100vw;
-    position: relative;
-    left: 50%;  
-    margin-left: -50vw;
-    object-fit: cover;
-    height: 400px;
-    filter: brightness(50%);
- }
+    .image-container {
+        width: 100vw;
+        position: relative;
+        left: 50%;  
+        margin-left: -50vw;
+        object-fit: cover;
+        height: 400px;
+        filter: brightness(70%);
+    }
 
- .overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
- }
+    .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    }
+
+    .footer1 {
+        background-color: #DCC8C8;
+    }
 </style>
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color: #DCC8C8;">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ZMDH_WebApp</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -63,18 +67,60 @@
 
     <div class="wrap-container mt-5">
         <div class="mx-auto">
-            <img src="https://w.wallhaven.cc/full/e7/wallhaven-e7ek7k.jpg" class="image-container" alt="Gathering-photo">
+            <img src="https://www.vdab.be/varia/opleidingen/sectie/header-9006.jpg" class="image-container" alt="Gathering-photo">
             <div class="overlay">
                 <h2>Onze deskundigen hebben al meer dan 10 jaar ervaring!</h2>
             </div>
         </div>
     </div>
 
-    <footer class="border-top footer text-muted mt-5">
-        <div class="container">
-            &copy; 2022 - ZMDH_WebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+<div class="footer1">
+  <footer class="row row-cols-5 py-5 my-5 border-top">
+    <div class="col">
+      <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+      </a>
+      <p class="text-muted">© 2021</p>
+    </div>
+
+    <div class="col">
+
+    </div>
+
+    <div class="col">
+      <h5>Section</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+      </ul>
+    </div>
+
+    <div class="col">
+      <h5>Section</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+      </ul>
+    </div>
+
+    <div class="col">
+      <h5>Section</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+      </ul>
+    </div>
+  </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
