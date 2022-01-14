@@ -397,3 +397,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 *.dll
+src\ZMDH_WebApp\obj
+src\ZMDH_WebApp\bin
