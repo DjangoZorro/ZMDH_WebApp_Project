@@ -28,6 +28,12 @@ namespace ZMDH_WebApp.Controllers
             return View();
         }
 
+
+        public IActionResult Chat()
+        {
+            return View();
+        }
+
         public IActionResult Contact()
         {
             return View();
@@ -38,5 +44,6 @@ namespace ZMDH_WebApp.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
     }
 }

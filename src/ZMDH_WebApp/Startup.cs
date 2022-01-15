@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using ZMDH_WebApp.Data;
+using SignalRChat.Hubs;
 
 namespace ZMDH_WebApp
 {
@@ -30,9 +31,10 @@ namespace ZMDH_WebApp
             services.AddControllersWithViews();
 
             services.AddDbContext<DBManager>(options =>
-                    options.UseSqlite(Configuration.GetConnectionString("DBManager")));
+                    options.UseSqlServer(Configuration.GetConnectionString("Default")));
 
             services.AddRazorPages();
+            services.AddSignalR();
 
             services.AddIdentity<IdentityUser, IdentityRole>()
                 // services.AddDefaultIdentity<IdentityUser>()
@@ -84,6 +86,7 @@ namespace ZMDH_WebApp
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+                endpoints.MapHub<ChatHub>("/chatHub");
             });
         }
     }
