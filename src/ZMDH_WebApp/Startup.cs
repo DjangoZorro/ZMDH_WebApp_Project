@@ -31,7 +31,7 @@ namespace ZMDH_WebApp
             services.AddControllersWithViews();
 
             services.AddDbContext<DBManager>(options =>
-                    options.UseSqlite(Configuration.GetConnectionString("DBManager")));
+                    options.UseSqlServer(Configuration.GetConnectionString("Default")));
 
             services.AddRazorPages();
             services.AddSignalR();
