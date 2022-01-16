@@ -23,6 +23,23 @@ namespace ZMDH_WebApp.Data
         //     base.OnModelCreating(builder);
         // }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Pedagoog>()
+                .HasOne(x => x.chatHub)
+                .WithMany(y => y.Pedagogen);
+            builder.Entity<Client>()
+                .HasOne(x => x.chatHub)
+                .WithMany(y => y.Clienten);             
+        }
+
+        public DbSet<Child> Children { get; set; }
+        public DbSet<Client> Clienten { get; set; }
+        public DbSet<Condition> Conditions { get; set; }
+        public DbSet<Diploma> Diplomas { get; set; }
+        public DbSet<Guardian> Guardians { get; set; }
+        public DbSet<Pedagoog> Pedagogen { get; set; }
+        public DbSet<Person> Persons { get; set; }
         public DbSet<Praktijk> Praktijken { get; set; }
     }
 }

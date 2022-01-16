@@ -1,12 +1,13 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 
 namespace ZMDH_WebApp.Models
 {
-    public class Person
+    public class Person : IdentityUser
     {
-        [ScaffoldColumn(false)]
-        [Key]
-        public int Id { get; set; }
+        // [ScaffoldColumn(false)]
+        // [Key]
+        // public int Id { get; set; }
 
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "Vul alstublieft een voornaam in."), MaxLength(45)]
@@ -41,10 +42,10 @@ namespace ZMDH_WebApp.Models
         [Display(Name = "Huisnummer")]
         public string HouseNumber { get; set; }
 
-        [DataType(DataType.Text)]
-        [Required(ErrorMessage = "Vul alstublieft een telefoonnummer in.")]
-        [RegularExpression(@"^\+316\d{8}$", ErrorMessage = "Telefoonnummer bestaat niet.")]
-        [Display(Name = "Telefoonnummer")]
-        public string PhoneNumber { get; set; }
+        // [DataType(DataType.Text)]
+        // [Required(ErrorMessage = "Vul alstublieft een telefoonnummer in.")]
+        // [RegularExpression(@"^\+316\d{8}$", ErrorMessage = "Telefoonnummer bestaat niet.")]
+        // [Display(Name = "Telefoonnummer")]
+        // public string PhoneNumber { get; set; }
     }
 }
