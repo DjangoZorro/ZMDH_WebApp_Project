@@ -6,8 +6,14 @@ namespace ZMDH_WebApp.Models
 {
     public class Client : IdentityUser
     {
-        public virtual ICollection<Condition> Conditions { get; set; }
+        public Condition Condition { get; set; }
 
-        public ChatHub chatHub { get; set; }
+        public Guardian Guardian { get; set; }
+
+        public IList<ChatHub> ChatHub { get; set; }
+
+        public Moderator Moderator { get; set; }
+
+        public Pedagoog Pedagoog { get; set; }
     }
 }

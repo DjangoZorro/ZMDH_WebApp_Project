@@ -12,7 +12,7 @@ namespace SignalRChat.Hubs
             await Clients.All.SendAsync("ReceiveMessage", user, message);
         }
 
-        public ICollection<Pedagoog> Pedagogen { get; set; }
-        public ICollection<Client> Clienten { get; set; }
+        public Pedagoog Pedagoog { get; set; }
+        public Client Client { get; set; }
     }
 }

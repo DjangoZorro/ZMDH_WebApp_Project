@@ -9,6 +9,6 @@ namespace ZMDH_WebApp.Models
         [Display(Name = "Diploma")]
         public string DiplomaName { get; set; }
 
-        public virtual ICollection<Pedagoog> Pedagogen { get; set; }
+        public IList<Pedagoog> Pedagogen { get; set; }
     }
 }

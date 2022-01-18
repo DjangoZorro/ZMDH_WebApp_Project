@@ -1,9 +1,16 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ZMDH_WebApp.Models
 {
     public class Condition
     {
-        public virtual ICollection<Client> Clienten { get; set; }
+        [Key]
+        public int Id { get; set; }
+        public string Naam { get; set; }
+
+        public IList<Client> Clienten { get; set; }
+
+        public IList<Entry> Entries { get; set; }
     }
 }
