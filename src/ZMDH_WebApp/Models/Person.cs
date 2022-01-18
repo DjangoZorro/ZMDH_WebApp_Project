@@ -19,11 +19,11 @@ namespace ZMDH_WebApp.Models
         [Display(Name = "Achternaam")]
         public string LastName { get; set; }
 
-        [DataType(DataType.EmailAddress)]
-        [Required(ErrorMessage = "Vul alstublieft een emailadres in.")]
-        [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "E-Mail is niet geldig.")]
-        [Display(Name = "E-Mailadres")]
-        public string EmailAddress { get; set; }
+        // [DataType(DataType.EmailAddress)]
+        // [Required(ErrorMessage = "Vul alstublieft een emailadres in.")]
+        // [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "E-Mail is niet geldig.")]
+        // [Display(Name = "E-Mailadres")]
+        // public string EmailAddress { get; set; }
 
         [DataType(DataType.PostalCode)]
         [Required(ErrorMessage = "Vul alstublieft een postcode in.")]
