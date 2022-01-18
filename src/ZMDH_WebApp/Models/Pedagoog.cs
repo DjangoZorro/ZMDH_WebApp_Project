@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
-using ZMDH_WebApp.Hubs;
 
 namespace ZMDH_WebApp.Models
 {
@@ -12,8 +11,6 @@ namespace ZMDH_WebApp.Models
         public string Specialization { get; set; }
 
         public virtual IList<Diploma> Diplomas { get; set; }
-
-        public IList<ChatHub> ChatHub { get; set; }
 
         public IList<Client> Clienten { get; set; }
 

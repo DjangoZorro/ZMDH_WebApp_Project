@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using ZMDH_WebApp.Models;
 
-namespace ZMDH_WebApp.Hubs
+namespace SignalR.Hubs
 {
     public class ChatHub : Hub
     {
@@ -11,8 +11,5 @@ namespace ZMDH_WebApp.Hubs
         {
             await Clients.All.SendAsync("ReceiveMessage", user, message);
         }
-
-        public Pedagoog Pedagoog { get; set; }
-        public Client Client { get; set; }
     }
 }

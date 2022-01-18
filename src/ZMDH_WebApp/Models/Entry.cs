@@ -6,6 +6,9 @@ namespace ZMDH_WebApp.Models
 {
     public class Entry
     {
+        [Key]
+        public int Id { get; set; }
+
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "Vul alstublieft uw volledige naam in."), MaxLength(45)]
         [Display(Name = "Volledige naam")]
