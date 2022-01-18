@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using ZMDH_WebApp.Data;
-using SignalRChat.Hubs;
+using ZMDH_WebApp.Hubs;
 
 namespace ZMDH_WebApp
 {
@@ -31,7 +31,7 @@ namespace ZMDH_WebApp
             services.AddControllersWithViews();
 
             services.AddDbContext<DBManager>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("Default")));
+                    options.UseSqlite(Configuration.GetConnectionString("DBManager")));
 
             services.AddRazorPages();
             services.AddSignalR();

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using SignalRChat.Hubs;
+using ZMDH_WebApp.Hubs;
 using ZMDH_WebApp.Models;
 
 namespace ZMDH_WebApp.Data

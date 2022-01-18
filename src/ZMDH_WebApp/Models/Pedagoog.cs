@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
-using SignalRChat.Hubs;
+using ZMDH_WebApp.Hubs;
 
 namespace ZMDH_WebApp.Models
 {

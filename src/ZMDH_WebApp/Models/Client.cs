@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
-using SignalRChat.Hubs;
+using ZMDH_WebApp.Hubs;
 
 namespace ZMDH_WebApp.Models
 {

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using SignalRChat.Hubs;
+using ZMDH_WebApp.Hubs;
 
 namespace ZMDH_WebApp.Models
 {

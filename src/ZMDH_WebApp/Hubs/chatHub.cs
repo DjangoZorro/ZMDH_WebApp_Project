@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using ZMDH_WebApp.Models;
 
-namespace SignalRChat.Hubs
+namespace ZMDH_WebApp.Hubs
 {
     public class ChatHub : Hub
     {
