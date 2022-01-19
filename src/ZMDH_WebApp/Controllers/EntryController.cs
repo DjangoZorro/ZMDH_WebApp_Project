@@ -48,7 +48,7 @@ namespace ZMDH_WebApp.Controllers
         // GET: Entry/Create
         public IActionResult Create()
         {
-            ViewData["ConditionId"] = new SelectList(_context.Conditions, "Id", "Id");
+            ViewData["ConditionId"] = new SelectList(_context.Conditions, "Id", "Naam");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace ZMDH_WebApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ConditionId"] = new SelectList(_context.Conditions, "Id", "Id", entry.ConditionId);
+            ViewData["ConditionId"] = new SelectList(_context.Conditions, "Id", "Naam", entry.ConditionId);
             return View(entry);
         }
 
@@ -82,7 +82,7 @@ namespace ZMDH_WebApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["ConditionId"] = new SelectList(_context.Conditions, "Id", "Id", entry.ConditionId);
+            ViewData["ConditionId"] = new SelectList(_context.Conditions, "Id", "Naam", entry.ConditionId);
             return View(entry);
         }
 
@@ -118,7 +118,7 @@ namespace ZMDH_WebApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ConditionId"] = new SelectList(_context.Conditions, "Id", "Id", entry.ConditionId);
+            ViewData["ConditionId"] = new SelectList(_context.Conditions, "Id", "Naam", entry.ConditionId);
             return View(entry);
         }
 

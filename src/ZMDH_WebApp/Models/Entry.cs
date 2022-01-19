@@ -21,7 +21,6 @@ namespace ZMDH_WebApp.Models
 
         [DataType(DataType.PostalCode)]
         [Required(ErrorMessage = "Vul alstublieft een postcode in.")]
-        [RegularExpression(@"/^[1-9][0-9]{3} ?(?!sa|sd|ss)[a-z]{2}$/i", ErrorMessage = "Ongeldige postcode.")]
         [Display(Name = "Postcode")]
         public string ZipCode { get; set; }
 
@@ -38,7 +37,6 @@ namespace ZMDH_WebApp.Models
 
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "Vul alstublieft een telefoonnummer in.")]
-        [RegularExpression(@"^\+316\d{8}$", ErrorMessage = "Telefoonnummer bestaat niet.")]
         [Display(Name = "Telefoonnummer")]
         public string PhoneNumber { get; set; }
 
@@ -48,10 +46,10 @@ namespace ZMDH_WebApp.Models
         [Display(Name = "E-Mailadres")]
         public string EmailAddress { get; set; }
 
+        [Required(ErrorMessage = "Selecteer alstublieft een conditie.")]
+        [Display(Name = "Conditie")]
         public int ConditionId { get; set; }
 
-        [Required(ErrorMessage = "Selecteer uw conditie.")]
-        [Display(Name = "Conditie")]
         public Condition Condition { get; set; }
     }
 }
