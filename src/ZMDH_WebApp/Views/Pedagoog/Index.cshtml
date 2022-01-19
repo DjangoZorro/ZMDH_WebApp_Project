@@ -16,6 +16,9 @@
                 @Html.DisplayNameFor(model => model.Specialization)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Moderator)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.UserName)
             </th>
             <th>
@@ -65,6 +68,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Specialization)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Moderator.Id)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UserName)

@@ -12,6 +12,31 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ConditionId" class="control-label"></label>
+                <select asp-for="ConditionId" class="form-control" asp-items="ViewBag.ConditionId"></select>
+                <span asp-validation-for="ConditionId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GuardianId" class="control-label"></label>
+                <input asp-for="GuardianId" class="form-control" />
+                <span asp-validation-for="GuardianId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ModeratorId" class="control-label"></label>
+                <select asp-for="ModeratorId" class="form-control" asp-items="ViewBag.ModeratorId"></select>
+                <span asp-validation-for="ModeratorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PedagoogId" class="control-label"></label>
+                <input asp-for="PedagoogId" class="form-control" />
+                <span asp-validation-for="PedagoogId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SelfHelpGroupId" class="control-label"></label>
+                <select asp-for="SelfHelpGroupId" class="form-control" asp-items="ViewBag.SelfHelpGroupId"></select>
+                <span asp-validation-for="SelfHelpGroupId" class="text-danger"></span>
+            </div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="UserName" class="control-label"></label>

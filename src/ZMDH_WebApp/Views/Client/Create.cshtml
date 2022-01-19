@@ -13,6 +13,28 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="ConditionId" class="control-label"></label>
+                <select asp-for="ConditionId" class ="form-control" asp-items="ViewBag.ConditionId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="GuardianId" class="control-label"></label>
+                <input asp-for="GuardianId" class="form-control" />
+                <span asp-validation-for="GuardianId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ModeratorId" class="control-label"></label>
+                <select asp-for="ModeratorId" class ="form-control" asp-items="ViewBag.ModeratorId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="PedagoogId" class="control-label"></label>
+                <input asp-for="PedagoogId" class="form-control" />
+                <span asp-validation-for="PedagoogId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SelfHelpGroupId" class="control-label"></label>
+                <select asp-for="SelfHelpGroupId" class ="form-control" asp-items="ViewBag.SelfHelpGroupId"></select>
+            </div>
+            <div class="form-group">
                 <label asp-for="Id" class="control-label"></label>
                 <input asp-for="Id" class="form-control" />
                 <span asp-validation-for="Id" class="text-danger"></span>

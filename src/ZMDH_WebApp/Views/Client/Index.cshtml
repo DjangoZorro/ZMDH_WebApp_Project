@@ -13,6 +13,21 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.GuardianId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PedagoogId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Condition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Moderator)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SelfHelpGroup)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.UserName)
             </th>
             <th>
@@ -60,6 +75,21 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GuardianId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PedagoogId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Condition.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Moderator.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SelfHelpGroup.Id)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>

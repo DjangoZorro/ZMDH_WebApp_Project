@@ -22,7 +22,8 @@ namespace ZMDH_WebApp.Controllers
         // GET: Client
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Clienten.ToListAsync());
+            var dBManager = _context.Clienten.Include(c => c.Condition).Include(c => c.Moderator).Include(c => c.SelfHelpGroup);
+            return View(await dBManager.ToListAsync());
         }
 
         // GET: Client/Details/5
@@ -34,6 +35,9 @@ namespace ZMDH_WebApp.Controllers
             }
 
             var client = await _context.Clienten
+                .Include(c => c.Condition)
+                .Include(c => c.Moderator)
+                .Include(c => c.SelfHelpGroup)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (client == null)
             {
@@ -46,6 +50,9 @@ namespace ZMDH_WebApp.Controllers
         // GET: Client/Create
         public IActionResult Create()
         {
+            ViewData["ConditionId"] = new SelectList(_context.Conditions, "Id", "Id");
+            ViewData["ModeratorId"] = new SelectList(_context.Moderators, "Id", "Id");
+            ViewData["SelfHelpGroupId"] = new SelectList(_context.SelfHelpGroups, "Id", "Id");
             return View();
         }
 
@@ -54,7 +61,7 @@ namespace ZMDH_WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] Client client)
+        public async Task<IActionResult> Create([Bind("ConditionId,GuardianId,ModeratorId,PedagoogId,SelfHelpGroupId,Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] Client client)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +69,9 @@ namespace ZMDH_WebApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ConditionId"] = new SelectList(_context.Conditions, "Id", "Id", client.ConditionId);
+            ViewData["ModeratorId"] = new SelectList(_context.Moderators, "Id", "Id", client.ModeratorId);
+            ViewData["SelfHelpGroupId"] = new SelectList(_context.SelfHelpGroups, "Id", "Id", client.SelfHelpGroupId);
             return View(client);
         }
 
@@ -78,6 +88,9 @@ namespace ZMDH_WebApp.Controllers
             {
                 return NotFound();
             }
+            ViewData["ConditionId"] = new SelectList(_context.Conditions, "Id", "Id", client.ConditionId);
+            ViewData["ModeratorId"] = new SelectList(_context.Moderators, "Id", "Id", client.ModeratorId);
+            ViewData["SelfHelpGroupId"] = new SelectList(_context.SelfHelpGroups, "Id", "Id", client.SelfHelpGroupId);
             return View(client);
         }
 
@@ -86,7 +99,7 @@ namespace ZMDH_WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] Client client)
+        public async Task<IActionResult> Edit(string id, [Bind("ConditionId,GuardianId,ModeratorId,PedagoogId,SelfHelpGroupId,Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] Client client)
         {
             if (id != client.Id)
             {
@@ -113,6 +126,9 @@ namespace ZMDH_WebApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ConditionId"] = new SelectList(_context.Conditions, "Id", "Id", client.ConditionId);
+            ViewData["ModeratorId"] = new SelectList(_context.Moderators, "Id", "Id", client.ModeratorId);
+            ViewData["SelfHelpGroupId"] = new SelectList(_context.SelfHelpGroups, "Id", "Id", client.SelfHelpGroupId);
             return View(client);
         }
 
@@ -125,6 +141,9 @@ namespace ZMDH_WebApp.Controllers
             }
 
             var client = await _context.Clienten
+                .Include(c => c.Condition)
+                .Include(c => c.Moderator)
+                .Include(c => c.SelfHelpGroup)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (client == null)
             {

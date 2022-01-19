@@ -10,7 +10,7 @@ namespace ZMDH_WebApp.Models
         [Display(Name = "Specialisatie")]
         public string Specialization { get; set; }
 
-        public virtual IList<Diploma> Diplomas { get; set; }
+        public int ModeratorId { get; set; }
 
         public IList<Client> Clienten { get; set; }
 

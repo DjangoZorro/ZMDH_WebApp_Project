@@ -22,7 +22,8 @@ namespace ZMDH_WebApp.Controllers
         // GET: Entry
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Entries.ToListAsync());
+            var dBManager = _context.Entries.Include(e => e.Condition);
+            return View(await dBManager.ToListAsync());
         }
 
         // GET: Entry/Details/5
@@ -34,6 +35,7 @@ namespace ZMDH_WebApp.Controllers
             }
 
             var entry = await _context.Entries
+                .Include(e => e.Condition)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (entry == null)
             {
@@ -46,6 +48,7 @@ namespace ZMDH_WebApp.Controllers
         // GET: Entry/Create
         public IActionResult Create()
         {
+            ViewData["ConditionId"] = new SelectList(_context.Conditions, "Id", "Id");
             return View();
         }
 
@@ -54,7 +57,7 @@ namespace ZMDH_WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FullName,BirthDate,ZipCode,CityName,HouseNumber,PhoneNumber,EmailAddress")] Entry entry)
+        public async Task<IActionResult> Create([Bind("Id,FullName,BirthDate,ZipCode,CityName,HouseNumber,PhoneNumber,EmailAddress,ConditionId")] Entry entry)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +65,7 @@ namespace ZMDH_WebApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ConditionId"] = new SelectList(_context.Conditions, "Id", "Id", entry.ConditionId);
             return View(entry);
         }
 
@@ -78,6 +82,7 @@ namespace ZMDH_WebApp.Controllers
             {
                 return NotFound();
             }
+            ViewData["ConditionId"] = new SelectList(_context.Conditions, "Id", "Id", entry.ConditionId);
             return View(entry);
         }
 
@@ -86,7 +91,7 @@ namespace ZMDH_WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FullName,BirthDate,ZipCode,CityName,HouseNumber,PhoneNumber,EmailAddress")] Entry entry)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FullName,BirthDate,ZipCode,CityName,HouseNumber,PhoneNumber,EmailAddress,ConditionId")] Entry entry)
         {
             if (id != entry.Id)
             {
@@ -113,6 +118,7 @@ namespace ZMDH_WebApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ConditionId"] = new SelectList(_context.Conditions, "Id", "Id", entry.ConditionId);
             return View(entry);
         }
 
@@ -125,6 +131,7 @@ namespace ZMDH_WebApp.Controllers
             }
 
             var entry = await _context.Entries
+                .Include(e => e.Condition)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (entry == null)
             {

@@ -48,7 +48,8 @@ namespace ZMDH_WebApp.Models
         [Display(Name = "E-Mailadres")]
         public string EmailAddress { get; set; }
 
-        [DataType(DataType.Text)]
+        public int ConditionId { get; set; }
+
         [Required(ErrorMessage = "Selecteer uw conditie.")]
         [Display(Name = "Conditie")]
         public Condition Condition { get; set; }

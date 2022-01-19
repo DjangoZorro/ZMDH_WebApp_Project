@@ -30,7 +30,6 @@ namespace ZMDH_WebApp.Data
 
         public DbSet<Client> Clienten { get; set; }
         public DbSet<Condition> Conditions { get; set; }
-        public DbSet<Diploma> Diplomas { get; set; }
         public DbSet<Guardian> Guardians { get; set; }
         public DbSet<Pedagoog> Pedagogen { get; set; }
         public DbSet<Entry> Entries { get; set; }
