@@ -59,6 +59,18 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Condition.Naam)
         </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GuardianName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GuardianName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EmailAddressGuardian)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EmailAddressGuardian)
+        </dd>
     </dl>
     
     <form asp-action="Delete">

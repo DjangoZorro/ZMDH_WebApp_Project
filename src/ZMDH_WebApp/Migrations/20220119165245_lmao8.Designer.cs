@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ZMDH_WebApp.Data;
 
 namespace ZMDH_WebApp.Migrations
 {
     [DbContext(typeof(DBManager))]
-    partial class DBManagerModelSnapshot : ModelSnapshot
+    [Migration("20220119165245_lmao8")]
+    partial class lmao8
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

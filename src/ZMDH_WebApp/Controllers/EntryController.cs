@@ -57,7 +57,7 @@ namespace ZMDH_WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FullName,BirthDate,ZipCode,CityName,HouseNumber,PhoneNumber,EmailAddress,ConditionId")] Entry entry)
+        public async Task<IActionResult> Create([Bind("Id,FullName,BirthDate,ZipCode,CityName,HouseNumber,PhoneNumber,EmailAddress,ConditionId,ConsentOfGuardian,GuardianName,EmailAddressGuardian")] Entry entry)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace ZMDH_WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FullName,BirthDate,ZipCode,CityName,HouseNumber,PhoneNumber,EmailAddress,ConditionId")] Entry entry)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FullName,BirthDate,ZipCode,CityName,HouseNumber,PhoneNumber,EmailAddress,ConditionId,ConsentOfGuardian,GuardianName,EmailAddressGuardian")] Entry entry)
         {
             if (id != entry.Id)
             {
