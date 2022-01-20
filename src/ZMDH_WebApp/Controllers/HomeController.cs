@@ -38,7 +38,7 @@ namespace ZMDH_WebApp.Controllers
         {
             return View();
         }
-
+        
         public IActionResult OverOns()
         {
             return View();
@@ -48,8 +48,8 @@ namespace ZMDH_WebApp.Controllers
         {
             return View();
         }
-
-        public IActionResult Test()
+        
+        public IActionResult FAQ()
         {
             return View();
         }
