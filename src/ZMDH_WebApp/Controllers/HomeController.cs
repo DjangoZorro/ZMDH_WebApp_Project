@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -35,6 +35,16 @@ namespace ZMDH_WebApp.Controllers
         }
 
         public IActionResult Contact()
+        {
+            return View();
+        }
+
+        public IActionResult OverOns()
+        {
+            return View();
+        }
+
+        public IActionResult Klachten()
         {
             return View();
         }
