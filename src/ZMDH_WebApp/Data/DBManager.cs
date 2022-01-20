@@ -16,6 +16,13 @@ namespace ZMDH_WebApp.Data
         {
         }
 
+        // protected override void OnModelCreating(ModelBuilder builder)
+        // {
+        //     builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Student", NormalizedName = "STUDENT", Id = Guid.NewGuid().ToString(), ConcurrencyStamp = Guid.NewGuid().ToString() });
+        //     builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Docent", NormalizedName = "DOCENT", Id = Guid.NewGuid().ToString(), ConcurrencyStamp = Guid.NewGuid().ToString() });
+        //     base.OnModelCreating(builder);
+        // }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
