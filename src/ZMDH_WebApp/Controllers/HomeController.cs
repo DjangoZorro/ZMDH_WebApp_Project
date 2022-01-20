@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -39,7 +39,7 @@ namespace ZMDH_WebApp.Controllers
             return View();
         }
 
-        public IActionResult Test()
+        public IActionResult FAQ()
         {
             return View();
         }
