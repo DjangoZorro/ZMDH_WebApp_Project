@@ -46,14 +46,10 @@ namespace ZMDH_WebApp
                 }
             });
 
-            // services.AddDbContext<DBManager>(options =>
-            //         options.UseSqlite(Configuration.GetConnectionString("DBManager")));
-
             services.AddRazorPages();
             services.AddSignalR();
 
             services.AddIdentity<IdentityUser, IdentityRole>()
-                // services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<DBManager>()
                 .AddDefaultTokenProviders()
                 .AddRoles<IdentityRole>()
