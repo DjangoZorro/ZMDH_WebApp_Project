@@ -4,25 +4,19 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Clienten</h1>
+<h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Maak een nieuwe aan</a>
+    <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.GuardianId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PedagoogId)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Condition)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Moderator)
+                @Html.DisplayNameFor(model => model.Guardian)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.SelfHelpGroup)
@@ -76,16 +70,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.GuardianId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PedagoogId)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Condition.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Moderator.Id)
+                @Html.DisplayFor(modelItem => item.Guardian.Id)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SelfHelpGroup.Id)
@@ -133,9 +121,9 @@
                 @Html.DisplayFor(modelItem => item.AccessFailedCount)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Pas aan</a> |
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Verwijder</a>
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }

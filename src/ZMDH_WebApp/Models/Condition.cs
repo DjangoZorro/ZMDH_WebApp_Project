@@ -7,6 +7,7 @@ namespace ZMDH_WebApp.Models
     {
         [Key]
         public int Id { get; set; }
+        
         public string Naam { get; set; }
 
         public IList<Client> Clienten { get; set; }

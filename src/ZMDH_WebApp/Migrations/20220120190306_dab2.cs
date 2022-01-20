@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ZMDH_WebApp.Migrations
 {
-    public partial class lmao : Migration
+    public partial class dab2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -35,15 +35,16 @@ namespace ZMDH_WebApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Moderators",
+                name: "Guardians",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    name = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Moderators", x => x.Id);
+                    table.PrimaryKey("PK_Guardians", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -93,7 +94,9 @@ namespace ZMDH_WebApp.Migrations
                     HouseNumber = table.Column<string>(type: "TEXT", nullable: false),
                     PhoneNumber = table.Column<string>(type: "TEXT", nullable: false),
                     EmailAddress = table.Column<string>(type: "TEXT", nullable: false),
-                    ConditionId = table.Column<int>(type: "INTEGER", nullable: false)
+                    ConditionId = table.Column<int>(type: "INTEGER", nullable: false),
+                    GuardianName = table.Column<string>(type: "TEXT", nullable: true),
+                    EmailAddressGuardian = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -114,13 +117,10 @@ namespace ZMDH_WebApp.Migrations
                     Discriminator = table.Column<string>(type: "TEXT", nullable: false),
                     ConditionId = table.Column<int>(type: "INTEGER", nullable: true),
                     GuardianId = table.Column<int>(type: "INTEGER", nullable: true),
-                    ModeratorId = table.Column<int>(type: "INTEGER", nullable: true),
-                    PedagoogId = table.Column<int>(type: "INTEGER", nullable: true),
                     SelfHelpGroupId = table.Column<int>(type: "INTEGER", nullable: true),
-                    GuardianId1 = table.Column<string>(type: "TEXT", nullable: true),
-                    PedagoogId1 = table.Column<string>(type: "TEXT", nullable: true),
+                    name = table.Column<string>(type: "TEXT", nullable: true),
+                    Pedagoog_name = table.Column<string>(type: "TEXT", nullable: true),
                     Specialization = table.Column<string>(type: "TEXT", nullable: true),
-                    Pedagoog_ModeratorId = table.Column<int>(type: "INTEGER", nullable: true),
                     UserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
@@ -140,33 +140,15 @@ namespace ZMDH_WebApp.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUsers_AspNetUsers_GuardianId1",
-                        column: x => x.GuardianId1,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_AspNetUsers_AspNetUsers_PedagoogId1",
-                        column: x => x.PedagoogId1,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
                         name: "FK_AspNetUsers_Conditions_ConditionId",
                         column: x => x.ConditionId,
                         principalTable: "Conditions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AspNetUsers_Moderators_ModeratorId",
-                        column: x => x.ModeratorId,
-                        principalTable: "Moderators",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AspNetUsers_Moderators_Pedagoog_ModeratorId",
-                        column: x => x.Pedagoog_ModeratorId,
-                        principalTable: "Moderators",
+                        name: "FK_AspNetUsers_Guardians_GuardianId",
+                        column: x => x.GuardianId,
+                        principalTable: "Guardians",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -299,24 +281,9 @@ namespace ZMDH_WebApp.Migrations
                 column: "ConditionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_GuardianId1",
+                name: "IX_AspNetUsers_GuardianId",
                 table: "AspNetUsers",
-                column: "GuardianId1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_ModeratorId",
-                table: "AspNetUsers",
-                column: "ModeratorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_Pedagoog_ModeratorId",
-                table: "AspNetUsers",
-                column: "Pedagoog_ModeratorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_PedagoogId1",
-                table: "AspNetUsers",
-                column: "PedagoogId1");
+                column: "GuardianId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUsers_SelfHelpGroupId",
@@ -365,7 +332,7 @@ namespace ZMDH_WebApp.Migrations
                 name: "Conditions");
 
             migrationBuilder.DropTable(
-                name: "Moderators");
+                name: "Guardians");
 
             migrationBuilder.DropTable(
                 name: "SelfHelpGroups");

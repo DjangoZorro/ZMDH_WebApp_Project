@@ -26,7 +26,7 @@ namespace ZMDH_WebApp.Controllers
         }
 
         // GET: Guardian/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -54,7 +54,7 @@ namespace ZMDH_WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] Guardian guardian)
+        public async Task<IActionResult> Create([Bind("Id,name")] Guardian guardian)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace ZMDH_WebApp.Controllers
         }
 
         // GET: Guardian/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -86,7 +86,7 @@ namespace ZMDH_WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] Guardian guardian)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,name")] Guardian guardian)
         {
             if (id != guardian.Id)
             {
@@ -117,7 +117,7 @@ namespace ZMDH_WebApp.Controllers
         }
 
         // GET: Guardian/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -137,7 +137,7 @@ namespace ZMDH_WebApp.Controllers
         // POST: Guardian/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var guardian = await _context.Guardians.FindAsync(id);
             _context.Guardians.Remove(guardian);
@@ -145,7 +145,7 @@ namespace ZMDH_WebApp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool GuardianExists(string id)
+        private bool GuardianExists(int id)
         {
             return _context.Guardians.Any(e => e.Id == id);
         }

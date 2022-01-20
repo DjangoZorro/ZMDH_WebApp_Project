@@ -279,15 +279,18 @@ namespace ZMDH_WebApp.Migrations
                     b.ToTable("Entries");
                 });
 
-            modelBuilder.Entity("ZMDH_WebApp.Models.Moderator", b =>
+            modelBuilder.Entity("ZMDH_WebApp.Models.Guardian", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("name")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Moderators");
+                    b.ToTable("Guardians");
                 });
 
             modelBuilder.Entity("ZMDH_WebApp.Models.SelfHelpGroup", b =>
@@ -314,53 +317,38 @@ namespace ZMDH_WebApp.Migrations
                     b.Property<int>("GuardianId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("GuardianId1")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("ModeratorId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("PedagoogId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("PedagoogId1")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("SelfHelpGroupId")
                         .HasColumnType("INTEGER");
 
                     b.HasIndex("ConditionId");
 
-                    b.HasIndex("GuardianId1");
-
-                    b.HasIndex("ModeratorId");
-
-                    b.HasIndex("PedagoogId1");
+                    b.HasIndex("GuardianId");
 
                     b.HasIndex("SelfHelpGroupId");
 
                     b.HasDiscriminator().HasValue("Client");
                 });
 
-            modelBuilder.Entity("ZMDH_WebApp.Models.Guardian", b =>
+            modelBuilder.Entity("ZMDH_WebApp.Models.Moderator", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.HasDiscriminator().HasValue("Guardian");
+                    b.Property<string>("name")
+                        .HasColumnType("TEXT");
+
+                    b.HasDiscriminator().HasValue("Moderator");
                 });
 
             modelBuilder.Entity("ZMDH_WebApp.Models.Pedagoog", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Property<int>("ModeratorId")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("Pedagoog_ModeratorId");
-
                     b.Property<string>("Specialization")
                         .HasColumnType("TEXT");
 
-                    b.HasIndex("ModeratorId");
+                    b.Property<string>("name")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Pedagoog_name");
 
                     b.HasDiscriminator().HasValue("Pedagoog");
                 });
@@ -437,17 +425,9 @@ namespace ZMDH_WebApp.Migrations
 
                     b.HasOne("ZMDH_WebApp.Models.Guardian", "Guardian")
                         .WithMany("client")
-                        .HasForeignKey("GuardianId1");
-
-                    b.HasOne("ZMDH_WebApp.Models.Moderator", "Moderator")
-                        .WithMany("Clienten")
-                        .HasForeignKey("ModeratorId")
+                        .HasForeignKey("GuardianId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("ZMDH_WebApp.Models.Pedagoog", "Pedagoog")
-                        .WithMany("Clienten")
-                        .HasForeignKey("PedagoogId1");
 
                     b.HasOne("ZMDH_WebApp.Models.SelfHelpGroup", "SelfHelpGroup")
                         .WithMany("Clienten")
@@ -459,22 +439,7 @@ namespace ZMDH_WebApp.Migrations
 
                     b.Navigation("Guardian");
 
-                    b.Navigation("Moderator");
-
-                    b.Navigation("Pedagoog");
-
                     b.Navigation("SelfHelpGroup");
-                });
-
-            modelBuilder.Entity("ZMDH_WebApp.Models.Pedagoog", b =>
-                {
-                    b.HasOne("ZMDH_WebApp.Models.Moderator", "Moderator")
-                        .WithMany("Pedagogen")
-                        .HasForeignKey("ModeratorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Moderator");
                 });
 
             modelBuilder.Entity("ZMDH_WebApp.Models.Condition", b =>
@@ -484,24 +449,12 @@ namespace ZMDH_WebApp.Migrations
                     b.Navigation("Entries");
                 });
 
-            modelBuilder.Entity("ZMDH_WebApp.Models.Moderator", b =>
-                {
-                    b.Navigation("Clienten");
-
-                    b.Navigation("Pedagogen");
-                });
-
-            modelBuilder.Entity("ZMDH_WebApp.Models.SelfHelpGroup", b =>
-                {
-                    b.Navigation("Clienten");
-                });
-
             modelBuilder.Entity("ZMDH_WebApp.Models.Guardian", b =>
                 {
                     b.Navigation("client");
                 });
 
-            modelBuilder.Entity("ZMDH_WebApp.Models.Pedagoog", b =>
+            modelBuilder.Entity("ZMDH_WebApp.Models.SelfHelpGroup", b =>
                 {
                     b.Navigation("Clienten");
                 });
