@@ -38,7 +38,17 @@ namespace ZMDH_WebApp.Controllers
         {
             return View();
         }
+        
+        public IActionResult OverOns()
+        {
+            return View();
+        }
 
+        public IActionResult Klachten()
+        {
+            return View();
+        }
+        
         public IActionResult FAQ()
         {
             return View();

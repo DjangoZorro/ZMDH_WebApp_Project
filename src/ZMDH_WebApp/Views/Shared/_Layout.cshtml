@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -63,6 +63,8 @@
                         <div class="navbar-nav">
                             <ul class="navbar-nav flex-grow-1">
                                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="OverOns">Over ons</a></li>
                                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Entry" asp-action="Create">Aanmelden</a></li>
                                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="FAQ">FAQs</a></li>
                             </ul>
@@ -85,11 +87,13 @@
 
     <div class="footer">
         <footer>
-            <ul class="nav justify-content-center text-black">
-                <li class="nav-item"><a class="nav-link px-4" asp-controller="Home" asp-action="Index">Home</a></li>
-                <li class="nav-item"><a class="nav-link px-4" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+            <ul class="nav inline-block justify-content-center text-black">
+                <li class="nav-item"><a class="nav-link px-4 block" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="nav-item"><a class="nav-link px-4 block" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                <li class="nav-item"><a class="nav-link px-4 block" asp-area="" asp-controller="Home" asp-action="OverOns">Over ons</a></li>
                 <li class="nav-item"><a class="nav-link px-4" asp-area="" asp-controller="Home" asp-action="FAQ">FAQs</a></li>
-                <li class="nav-item"><a class="nav-link px-4">About</a></li>
+                <li class="nav-item"><a class="nav-link px-4 block" asp-area="" asp-controller="Entry" asp-action="Create">Aanmelden</a></li>
+                <li class="nav-item"><a class="nav-link px-4 block" asp-area="" asp-controller="Home" asp-action="Klachten">Klachten</a></li>
             </ul>
         </footer>
     </div>
