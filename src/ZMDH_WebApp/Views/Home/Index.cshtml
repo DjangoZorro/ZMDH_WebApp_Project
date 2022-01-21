@@ -12,7 +12,7 @@
                       <h1>Welkom bij</h1>
                       <h2>Zorg Maatschap Den Haag</h1>
                       <p>Vragen of een afspraak in plannen? Neem dan nu contact op:</p>
-                      <a class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="Contact"><b style="color: #000">Contact ></b></a>
+                      <a class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="Contact">Contact ></a>
                   </div>
               </div>
           </div>
@@ -72,3 +72,36 @@
       </div>
   </div>
 </div>
+
+<style>
+  .wrap-container {
+      position: relative;
+      color: white;
+  }
+
+ .container-banner {
+    top: 0px;
+ }
+
+ .image-container {
+      width: 99.7vw;
+      position: relative;
+      left: 50%;  
+      margin-left: -50vw;
+      object-fit: cover;
+      height: 400px;
+      filter: brightness(70%);
+    }
+
+ .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+ }
+ 
+  .card {
+      color: black;
+      opacity: 85%;
+  }
+</style>
