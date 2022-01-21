@@ -35,5 +35,6 @@ namespace ZMDH_WebApp.Data
         public DbSet<Entry> Entries { get; set; }
         public DbSet<Moderator> Moderators { get; set; }
         public DbSet<SelfHelpGroup> SelfHelpGroups { get; set; }
+        public DbSet<Therapy> Therapies { get; set; }
     }
 }

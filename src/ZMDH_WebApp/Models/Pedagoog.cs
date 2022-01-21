@@ -13,5 +13,9 @@ namespace ZMDH_WebApp.Models
         [DataType(DataType.Text)]
         [Display(Name = "Specialisatie")]
         public string Specialization { get; set; }
+
+        public int TherapyId { get; set; }
+
+        public Therapy Therapy { get; set; }
     }
 }
