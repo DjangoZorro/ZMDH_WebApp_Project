@@ -12,18 +12,20 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using ZMDH_WebApp.Data;
-using SignalRChat.Hubs;
+using SignalR.Hubs;
 
 namespace ZMDH_WebApp
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
+            Environment = env;
             Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
+        public IWebHostEnvironment Environment { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -31,7 +33,21 @@ namespace ZMDH_WebApp
             services.AddControllersWithViews();
 
             services.AddDbContext<DBManager>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("Default")));
+            {
+                var connectionString = Configuration.GetConnectionString("DBManager");
+
+                if (Environment.IsDevelopment())
+                {
+                    options.UseSqlite(connectionString);
+                }
+                else
+                {
+                    options.UseSqlServer(connectionString);
+                }
+            });
+
+            // services.AddDbContext<DBManager>(options =>
+            //         options.UseSqlite(Configuration.GetConnectionString("DBManager")));
 
             services.AddRazorPages();
             services.AddSignalR();

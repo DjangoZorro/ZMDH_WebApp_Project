@@ -1,142 +1,106 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ZMDH_WebApp</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/chatPopup.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <style>
     .wrap-container {
         position: relative;
-        color: white;
+        @* color: white; *@
     }
 
-    .image-container {
-        width: 100vw;
-        position: relative;
-        left: 50%;
-        margin-left: -50vw;
-        object-fit: cover;
-        height: 400px;
-        filter: brightness(70%);
-    }
+    @* .header {
+        height: 0px;
+    } *@
 
     .overlay {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     }
 
-    .footer1 {
+    @* .main {
+        top: 0px;
+        position: relative;
+    } *@
+
+    .footer {
+        background-color: #DCC8C8;
+        height: 80px;
+        position: bottom;
+        bottom: 0px;
+    }
+
+    footer li a {
+        color: black;
+    }
+
+
+    nav {
         background-color: #DCC8C8;
     }
+
+    
 </style>
 
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3"
-            style="background-color: #DCC8C8;">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ZMDH_WebApp</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
-                                asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                    <partial name="_LoginPartial" />
+<body id=>
+    <div class="header">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ZMDH_WebApp</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <ul class="navbar-nav flex-grow-1">
+                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="OverOns">Over ons</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Entry" asp-action="Create">Aanmelden</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="FAQ">FAQs</a></li>
+                            </ul>
+                        </div>
+                        <partial name="_LoginPartial" />
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="container-fluid">
-            @RenderBody()
-        </main>
+                
+            </nav>
+        </header>
     </div>
 
-    <div class="wrap-container mt-5">
-        <div class="mx-auto">
-            <img src="https://www.vdab.be/varia/opleidingen/sectie/header-9006.jpg" class="image-container"
-                alt="Gathering-photo">
-            <div class="overlay">
-                <h2>Onze deskundigen hebben al meer dan 10 jaar ervaring!</h2>
-            </div>
+    <div class="main h-100">
+        <div class="container">
+            <main role="main" class="container-fluid">
+                @RenderBody()
+            </main>
         </div>
     </div>
 
-    <div class="footer1">
-        <footer class="row row-cols-5 py-5 my-5 border-top">
-            <div class="col">
-                <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
-                    <svg class="bi me-2" width="40" height="32">
-                        <use xlink:href="#bootstrap"></use>
-                    </svg>
-                </a>
-                <p class="text-muted">© 2021</p>
-            </div>
-
-            <div class="col">
-
-            </div>
-
-            <div class="col">
-                <h5>Section</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-                </ul>
-            </div>
-
-            <div class="col">
-                <h5>Section</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-                </ul>
-            </div>
-
-            <div class="col">
-                <h5>Section</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-                </ul>
-            </div>
+    <div class="footer">
+        <footer>
+            <ul class="nav inline-block justify-content-center text-black">
+                <li class="nav-item"><a class="nav-link px-4 block" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="nav-item"><a class="nav-link px-4 block" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                <li class="nav-item"><a class="nav-link px-4 block" asp-area="" asp-controller="Home" asp-action="OverOns">Over ons</a></li>
+                <li class="nav-item"><a class="nav-link px-4" asp-area="" asp-controller="Home" asp-action="FAQ">FAQs</a></li>
+                <li class="nav-item"><a class="nav-link px-4 block" asp-area="" asp-controller="Entry" asp-action="Create">Aanmelden</a></li>
+                <li class="nav-item"><a class="nav-link px-4 block" asp-area="" asp-controller="Home" asp-action="Klachten">Klachten</a></li>
+            </ul>
         </footer>
+    </div>
 
-        
 
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-        @await RenderSectionAsync("Scripts", required: false)
-
-        
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
-
 </html>
