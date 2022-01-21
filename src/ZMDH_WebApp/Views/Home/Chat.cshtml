@@ -8,16 +8,49 @@
 
 
 
-<div class="d-flex flex-row justify-content-between p-3 adiv text-white"> <i class="fa fa-chevron-left"></i>
+<div class="d-flex flex-row justify-content-between p-3 adiv text-white"> <i class="fa fa-chevron-left back"
+        name="back"></i>
     <span class="pb-3">Live chat</span> <input id="temp" type="text" value='anoniem'
         style="visibility: hidden; position: absolute;" disabled readonly>
     <input class="userInputLabel" id="userInput" type="text" value=@User.Identity.Name
         aria-label="Disabled input example" disabled readonly>
 </div>
 
-    <div>
-        <div class="portlet-body chat-widget" style="overflow-y: scroll; overflow-y: auto; width: auto; height: 300px;">
-            
+<div>
+    <div class="container chatContainer">
+    <div class="row">
+        <div class="col-sm-2 chatxscroll">
+            <div class="portlet-body chat-widget"
+                style="overflow-y: scroll; overflow-y: auto; width: auto; height: 300px;">
+
+                <div class="d-flex flex-row justify-content-between adivbox text-black">
+                    <div class="col chatxscroll" id="">
+
+                        <div class="contentGroups" id="">
+                            <p>Zelfhulpgroep1</p>
+                        </div>
+                        <div class="contentGroups">
+                            <p>Zelfhulpgroep2</p>
+                        </div>
+                        <div class="contentGroups">
+                            <p>Zelfhulpgroep3</p>
+                        </div>
+                        <div class="contentGroups">
+                            <p>Zelfhulpgroep4</p>
+                        </div>
+                        <div class="contentGroups">
+                            <p>Zelfhulpgroep5</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-sm-10 chatxscroll">
+            <div class="portlet-body chat-widget"
+                style="overflow-y: scroll; overflow-y: auto; width: auto; height: 300px;">
+
                 <div class="d-flex flex-row justify-content-between p-3 adivbox text-black">
                     <div class="col" id="messagesList">
 
@@ -44,22 +77,44 @@
 
                     </div>
                 </div>
-            
-        </div>
 
-        <div class="form-group px-3 sendbox" > <textarea class="form-control" id="messageInput" rows="5"
-                            placeholder="Typ uw bericht"></textarea>
-                        <input type="button" class="btn btn-sm btn-primary send" id="sendButton"
-                            value="Stuur bericht" />
-                        <label for="anoniem" style="font-size: 20px;">Bericht anoniem versturen&nbsp;</label><input
-                            type="checkbox" id="anoniem" name="anoniem" value="false" onclick="anoniem()">
-                        <br>
-                    </div>
+            </div>
+        </div>
+    </div>
     </div>
 
+    <div class="form-group px-3 sendbox"> <textarea class="form-control" id="messageInput" rows="5"
+            placeholder="Typ uw bericht"></textarea>
+        <input type="button" class="btn btn-sm btn-primary send" id="sendButton" value="Stuur bericht" />
+        <label for="anoniem" style="font-size: 20px;">Bericht anoniem versturen&nbsp;</label><input type="checkbox"
+            id="anoniem" name="anoniem" value="false" onclick="anoniem()">
+        <br>
+    </div>
+</div>
+
+@* test *@
+<input type="button" class="btn btn-sm btn-primary send" id="join-group" value="join" />
+<input type="button" class="btn btn-sm btn-primary send" id="leave-group" value="leave" />
+<input type="button" class="btn btn-sm btn-primary send" id="dend" value="Stuur bericht" />
+
+<input class="userInputLabel" id="group-name" type="text" value="testgroup" aria-label="Disabled input example" disabled
+    readonly>
+<input class="userInputLabel" id="group-message-text" type="text" value="testbericht"
+    aria-label="Disabled input example" disabled readonly>
+
+
+@* test *@
 
 @* Chat end https://bbbootstrap.com/snippets/bootstrap-live-chat-form-user-icons-13996196 *@
 
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/chat.js"></script>
 <script src="~/js/chatPopup.js"></script>
+
+<script type="text/javascript">
+    var i = 0;
+    $('.back').click(function () {
+        console.log("sdfsd");
+    });
+</script>

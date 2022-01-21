@@ -4,8 +4,7 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 
 //Disable send button until connection is established
 document.getElementById("sendButton").disabled = true;
-
-connection.on("ReceiveMessage", function (user, message) {
+connection.on("Send", function (message) {
     
 
         divc = "<div>.container.content-rows";
@@ -20,7 +19,7 @@ connection.on("ReceiveMessage", function (user, message) {
         // I'm assuming it's a string. 
         var inner = document.createElement('div');
         inner.className = "chat ml-2 p-3";
-        inner.textContent = `${user} says ${message}`;
+        inner.textContent = `${message}`;
         node.appendChild(inner);
       }
   
@@ -65,7 +64,7 @@ document.getElementById("sendButton").addEventListener("click", function (event)
 
 function anoniem() {
 
- let user = document.getElementById("userInput");
+ var user = document.getElementById("userInput");
  let temp = document.getElementById("temp");
   if(document.getElementById("anoniem").checked){
     temp.value = user.value;
@@ -75,3 +74,51 @@ function anoniem() {
   }
 
 };
+
+// neww 
+
+document.getElementById("dend").addEventListener("click", async (event) => {
+  var user = document.getElementById("userInput").value;
+  var groupName = document.getElementById("group-name").value;
+  var groupMsg = document.getElementById("group-message-text").value;
+  try {
+      await connection.invoke("SendMessageToGroup", user, groupName, groupMsg);
+  }
+  catch (e) {
+      console.error(e.toString());
+  }
+  event.preventDefault();
+});
+document.getElementById("join-group").addEventListener("click", async (event) => {
+  var user = document.getElementById("userInput").value;
+  var groupName = document.getElementById("group-name").value;
+  try {
+      await connection.invoke("AddToGroup",user, groupName);
+  }
+  catch (e) {
+      console.error(e.toString());
+  }
+  event.preventDefault();
+});
+document.getElementById("leave-group").addEventListener("click", async (event) => {
+  var user = document.getElementById("userInput").value;
+  var groupName = document.getElementById("group-name").value;
+  console.log(groupName);
+  try {
+      await connection.invoke("RemoveFromGroup",user, groupName);
+  }
+  catch (e) {
+      console.error(e.toString());
+  }
+  event.preventDefault();
+});
+// We need an async function in order to use await, but we want this code to run immediately,
+// so we use an "immediately-executed async function"
+// (async () => {
+//   try {
+//       await connection.start();
+//   }
+//   catch (e) {
+//       console.error(e.toString());
+//   }
+// })();

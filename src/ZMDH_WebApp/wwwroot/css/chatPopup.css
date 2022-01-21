@@ -372,4 +372,24 @@ height:40px;
 
 .text-red {
     color: #e74c3c;
-}           
+}     
+
+.chatxscroll{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+
+}
+
+.contentGroups{
+    height: 40%;
+    border-bottom: ridge;
+    border-right: 1px solid black;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: white;
+}
+
+.chatContainer{
+margin-top: 0%;
+}
