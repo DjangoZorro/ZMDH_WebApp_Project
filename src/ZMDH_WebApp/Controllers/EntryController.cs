@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,10 +14,12 @@ namespace ZMDH_WebApp.Controllers
     public class EntryController : Controller
     {
         private readonly DBManager _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public EntryController(DBManager context)
+        public EntryController(DBManager context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Entry
@@ -67,6 +70,22 @@ namespace ZMDH_WebApp.Controllers
             }
             ViewData["ConditionId"] = new SelectList(_context.Conditions, "Id", "Naam", entry.ConditionId);
             return View(entry);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GenerateAccount(EntryGenerateModel entryGenerateModel)
+        {
+            Entry entry = _context.Entries.Single(a => a.Id == entryGenerateModel.Id);
+            var user = new Client
+            {
+                UserName = entry.EmailAddress,
+                Email = entry.EmailAddress,
+                ConditionId = entry.ConditionId
+            };
+
+            await _userManager.CreateAsync(user, "Test123!");
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Entry/Edit/5

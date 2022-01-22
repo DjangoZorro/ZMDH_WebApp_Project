@@ -1,4 +1,4 @@
-@model IEnumerable<ZMDH_WebApp.Models.Pedagoog>
+@model PaginatedList<ZMDH_WebApp.Models.Pedagoog>
 
 @{
     ViewData["Title"] = "Index";
@@ -30,13 +30,16 @@
                 <a asp-action="Index" asp-route-sortOrder='@ViewData["SpecSortParm"]' asp-route-currentFilter='@ViewData["CurrentFilter"]'>Specialisatie</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UserName)
+                Behandeling
+            </th>
+            <th>
+                Username
             </th>
             <th>
                 <a asp-action="Index" asp-route-sortOrder='@ViewData["EmailSortParm"]' asp-route-currentFilter='@ViewData["CurrentFilter"]'>E-Mail</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
+                Telefoonnummer
             </th>
             <th></th>
         </tr>
@@ -51,16 +54,56 @@
                 @Html.DisplayFor(modelItem => item.Specialization)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Therapy.Id)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NormalizedUserName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.NormalizedEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailConfirmed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PasswordHash)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecurityStamp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConcurrencyStamp)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
             </td>
             <td>
+<<<<<<< Updated upstream
                 <a asp-action="Edit" asp-route-id="@item.Id">Pas aan</a> |
+=======
+                @Html.DisplayFor(modelItem => item.PhoneNumberConfirmed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TwoFactorEnabled)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LockoutEnd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LockoutEnabled)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccessFailedCount)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+>>>>>>> Stashed changes
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Verwijder</a>
             </td>
@@ -68,3 +111,23 @@
 }
     </tbody>
 </table>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Terug
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Volgende
+</a>

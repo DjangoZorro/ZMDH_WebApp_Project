@@ -7,9 +7,9 @@ namespace ZMDH_WebApp.Models
     public class Client : IdentityUser
     {
         public int ConditionId { get; set; }
-        public int GuardianId { get; set; }
-        public int SelfHelpGroupId { get; set; }
-        public int TherapyId { get; set; }
+        public int? GuardianId { get; set; }
+        public int? SelfHelpGroupId { get; set; }
+        public int? TherapyId { get; set; }
 
         public Condition Condition { get; set; }
 

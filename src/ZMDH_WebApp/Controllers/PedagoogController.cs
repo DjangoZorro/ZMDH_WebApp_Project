@@ -49,7 +49,7 @@ namespace ZMDH_WebApp.Controllers
                 case "name_desc":
                     pedagogen = pedagogen.OrderBy(s => s.name);
                     break;
-                case "achternaam_desc":
+                case "email_desc":
                     pedagogen = pedagogen.OrderBy(s => s.Email);
                     break;
                 default:
