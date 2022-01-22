@@ -9,8 +9,8 @@ using ZMDH_WebApp.Data;
 namespace ZMDH_WebApp.Migrations
 {
     [DbContext(typeof(DBManager))]
-    [Migration("20220119160447_lmao3")]
-    partial class lmao3
+    [Migration("20220121010642_lel")]
+    partial class lel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -251,9 +251,15 @@ namespace ZMDH_WebApp.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("EmailAddressGuardian")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("FullName")
                         .IsRequired()
                         .HasMaxLength(45)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("GuardianName")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("HouseNumber")
@@ -275,15 +281,18 @@ namespace ZMDH_WebApp.Migrations
                     b.ToTable("Entries");
                 });
 
-            modelBuilder.Entity("ZMDH_WebApp.Models.Moderator", b =>
+            modelBuilder.Entity("ZMDH_WebApp.Models.Guardian", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("name")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Moderators");
+                    b.ToTable("Guardians");
                 });
 
             modelBuilder.Entity("ZMDH_WebApp.Models.SelfHelpGroup", b =>
@@ -300,6 +309,23 @@ namespace ZMDH_WebApp.Migrations
                     b.ToTable("SelfHelpGroups");
                 });
 
+            modelBuilder.Entity("ZMDH_WebApp.Models.Therapy", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ClientId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("PedagoogId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Therapies");
+                });
+
             modelBuilder.Entity("ZMDH_WebApp.Models.Client", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
@@ -310,53 +336,50 @@ namespace ZMDH_WebApp.Migrations
                     b.Property<int>("GuardianId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("GuardianId1")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("ModeratorId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("PedagoogId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("PedagoogId1")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("SelfHelpGroupId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("TherapyId")
                         .HasColumnType("INTEGER");
 
                     b.HasIndex("ConditionId");
 
-                    b.HasIndex("GuardianId1");
-
-                    b.HasIndex("ModeratorId");
-
-                    b.HasIndex("PedagoogId1");
+                    b.HasIndex("GuardianId");
 
                     b.HasIndex("SelfHelpGroupId");
+
+                    b.HasIndex("TherapyId")
+                        .IsUnique();
 
                     b.HasDiscriminator().HasValue("Client");
                 });
 
-            modelBuilder.Entity("ZMDH_WebApp.Models.Guardian", b =>
+            modelBuilder.Entity("ZMDH_WebApp.Models.Moderator", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.HasDiscriminator().HasValue("Guardian");
+                    b.Property<string>("name")
+                        .HasColumnType("TEXT");
+
+                    b.HasDiscriminator().HasValue("Moderator");
                 });
 
             modelBuilder.Entity("ZMDH_WebApp.Models.Pedagoog", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Property<int>("ModeratorId")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("Pedagoog_ModeratorId");
-
                     b.Property<string>("Specialization")
                         .HasColumnType("TEXT");
 
-                    b.HasIndex("ModeratorId");
+                    b.Property<int>("TherapyId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("Pedagoog_TherapyId");
+
+                    b.Property<string>("name")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Pedagoog_name");
+
+                    b.HasIndex("TherapyId");
 
                     b.HasDiscriminator().HasValue("Pedagoog");
                 });
@@ -433,17 +456,9 @@ namespace ZMDH_WebApp.Migrations
 
                     b.HasOne("ZMDH_WebApp.Models.Guardian", "Guardian")
                         .WithMany("client")
-                        .HasForeignKey("GuardianId1");
-
-                    b.HasOne("ZMDH_WebApp.Models.Moderator", "Moderator")
-                        .WithMany("Clienten")
-                        .HasForeignKey("ModeratorId")
+                        .HasForeignKey("GuardianId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("ZMDH_WebApp.Models.Pedagoog", "Pedagoog")
-                        .WithMany("Clienten")
-                        .HasForeignKey("PedagoogId1");
 
                     b.HasOne("ZMDH_WebApp.Models.SelfHelpGroup", "SelfHelpGroup")
                         .WithMany("Clienten")
@@ -451,26 +466,30 @@ namespace ZMDH_WebApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("ZMDH_WebApp.Models.Therapy", "Therapy")
+                        .WithOne("Clienten")
+                        .HasForeignKey("ZMDH_WebApp.Models.Client", "TherapyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Condition");
 
                     b.Navigation("Guardian");
 
-                    b.Navigation("Moderator");
-
-                    b.Navigation("Pedagoog");
-
                     b.Navigation("SelfHelpGroup");
+
+                    b.Navigation("Therapy");
                 });
 
             modelBuilder.Entity("ZMDH_WebApp.Models.Pedagoog", b =>
                 {
-                    b.HasOne("ZMDH_WebApp.Models.Moderator", "Moderator")
+                    b.HasOne("ZMDH_WebApp.Models.Therapy", "Therapy")
                         .WithMany("Pedagogen")
-                        .HasForeignKey("ModeratorId")
+                        .HasForeignKey("TherapyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Moderator");
+                    b.Navigation("Therapy");
                 });
 
             modelBuilder.Entity("ZMDH_WebApp.Models.Condition", b =>
@@ -480,11 +499,9 @@ namespace ZMDH_WebApp.Migrations
                     b.Navigation("Entries");
                 });
 
-            modelBuilder.Entity("ZMDH_WebApp.Models.Moderator", b =>
+            modelBuilder.Entity("ZMDH_WebApp.Models.Guardian", b =>
                 {
-                    b.Navigation("Clienten");
-
-                    b.Navigation("Pedagogen");
+                    b.Navigation("client");
                 });
 
             modelBuilder.Entity("ZMDH_WebApp.Models.SelfHelpGroup", b =>
@@ -492,14 +509,11 @@ namespace ZMDH_WebApp.Migrations
                     b.Navigation("Clienten");
                 });
 
-            modelBuilder.Entity("ZMDH_WebApp.Models.Guardian", b =>
-                {
-                    b.Navigation("client");
-                });
-
-            modelBuilder.Entity("ZMDH_WebApp.Models.Pedagoog", b =>
+            modelBuilder.Entity("ZMDH_WebApp.Models.Therapy", b =>
                 {
                     b.Navigation("Clienten");
+
+                    b.Navigation("Pedagogen");
                 });
 #pragma warning restore 612, 618
         }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using ZMDH_WebApp.Models;
 
 namespace ZMDH_WebApp.Controllers
 {
+    [Authorize]
     public class ModeratorController : Controller
     {
         private readonly DBManager _context;
@@ -26,7 +28,7 @@ namespace ZMDH_WebApp.Controllers
         }
 
         // GET: Moderator/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
@@ -54,7 +56,7 @@ namespace ZMDH_WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id")] Moderator moderator)
+        public async Task<IActionResult> Create([Bind("name,Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] Moderator moderator)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +68,7 @@ namespace ZMDH_WebApp.Controllers
         }
 
         // GET: Moderator/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
             {
@@ -86,7 +88,7 @@ namespace ZMDH_WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id")] Moderator moderator)
+        public async Task<IActionResult> Edit(string id, [Bind("name,Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] Moderator moderator)
         {
             if (id != moderator.Id)
             {
@@ -117,7 +119,7 @@ namespace ZMDH_WebApp.Controllers
         }
 
         // GET: Moderator/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
@@ -137,7 +139,7 @@ namespace ZMDH_WebApp.Controllers
         // POST: Moderator/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var moderator = await _context.Moderators.FindAsync(id);
             _context.Moderators.Remove(moderator);
@@ -145,7 +147,7 @@ namespace ZMDH_WebApp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ModeratorExists(int id)
+        private bool ModeratorExists(string id)
         {
             return _context.Moderators.Any(e => e.Id == id);
         }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using ZMDH_WebApp.Models;
 
 namespace ZMDH_WebApp.Controllers
 {
+    [Authorize]
     public class PedagoogController : Controller
     {
         private readonly DBManager _context;
@@ -20,10 +22,43 @@ namespace ZMDH_WebApp.Controllers
         }
 
         // GET: Pedagoog
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
-            var dBManager = _context.Pedagogen.Include(p => p.Moderator);
-            return View(await dBManager.ToListAsync());
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["SpecSortParm"] = String.IsNullOrEmpty(sortOrder) ? "spec_desc" : "";
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "naam_desc" : "";
+            ViewData["EmailSortParm"] = String.IsNullOrEmpty(sortOrder) ? "email_desc" : "";
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+            var pedagogen = from x in _context.Pedagogen select x;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                pedagogen = pedagogen.Where(s => s.name.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    pedagogen = pedagogen.OrderBy(s => s.name);
+                    break;
+                case "achternaam_desc":
+                    pedagogen = pedagogen.OrderBy(s => s.Email);
+                    break;
+                default:
+                    pedagogen = pedagogen.OrderBy(s => s.Specialization);
+                    break;
+            }
+            int pageSize = 5;
+
+            return View(await PaginatedList<Pedagoog>.CreateAsync(pedagogen.Include(x => x.Therapy).AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
         // GET: Pedagoog/Details/5
@@ -35,7 +70,6 @@ namespace ZMDH_WebApp.Controllers
             }
 
             var pedagoog = await _context.Pedagogen
-                .Include(p => p.Moderator)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (pedagoog == null)
             {
@@ -48,7 +82,6 @@ namespace ZMDH_WebApp.Controllers
         // GET: Pedagoog/Create
         public IActionResult Create()
         {
-            ViewData["ModeratorId"] = new SelectList(_context.Moderators, "Id", "Id");
             return View();
         }
 
@@ -57,7 +90,7 @@ namespace ZMDH_WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Specialization,ModeratorId,Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] Pedagoog pedagoog)
+        public async Task<IActionResult> Create([Bind("name,Specialization,Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] Pedagoog pedagoog)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +98,6 @@ namespace ZMDH_WebApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ModeratorId"] = new SelectList(_context.Moderators, "Id", "Id", pedagoog.ModeratorId);
             return View(pedagoog);
         }
 
@@ -82,7 +114,6 @@ namespace ZMDH_WebApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["ModeratorId"] = new SelectList(_context.Moderators, "Id", "Id", pedagoog.ModeratorId);
             return View(pedagoog);
         }
 
@@ -91,7 +122,7 @@ namespace ZMDH_WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Specialization,ModeratorId,Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] Pedagoog pedagoog)
+        public async Task<IActionResult> Edit(string id, [Bind("name,Specialization,Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] Pedagoog pedagoog)
         {
             if (id != pedagoog.Id)
             {
@@ -118,7 +149,6 @@ namespace ZMDH_WebApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ModeratorId"] = new SelectList(_context.Moderators, "Id", "Id", pedagoog.ModeratorId);
             return View(pedagoog);
         }
 
@@ -131,7 +161,6 @@ namespace ZMDH_WebApp.Controllers
             }
 
             var pedagoog = await _context.Pedagogen
-                .Include(p => p.Moderator)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (pedagoog == null)
             {

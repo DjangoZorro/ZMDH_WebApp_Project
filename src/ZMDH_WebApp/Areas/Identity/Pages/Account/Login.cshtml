@@ -4,13 +4,14 @@
 @{
     ViewData["Title"] = "Log in";
 }
-<div class="filler"></div>
 
-<div class="row justify-content-center">
-    <div class="col-md-4">
+<div class="mt-5">
+
+    <div class="row justify-content-center">
         <section>
+            <h1 class="text-left ">@ViewData["Title"]</h1>
             <form id="account" method="post">
-                <h4>Log in</h4>
+                <h4>Log in met uw email adres</h4>
                 <hr />
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
@@ -19,7 +20,7 @@
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Input.Password">Wachtwoord</label>
+                    <label asp-for="Input.Password"></label>
                     <input asp-for="Input.Password" class="form-control" />
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
@@ -27,7 +28,7 @@
                     <div class="checkbox">
                         <label asp-for="Input.RememberMe">
                             <input asp-for="Input.RememberMe" />
-                            Onthoudt gegevens
+                            @Html.DisplayNameFor(m => m.Input.RememberMe)
                         </label>
                     </div>
                 </div>
@@ -36,27 +37,22 @@
                 </div>
                 <div class="form-group">
                     <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">Wacthwoord vergeten</a>
+                        <a id="forgot-password" asp-page="./ForgotPassword">Wachtwoord vergeten?</a>
                     </p>
                     <p>
                         <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Registreer als nieuwe gebruiker</a>
                     </p>
                     <p>
-                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Email bevestiging opnieuw verzenden</a>
+                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Verstuur email bevestiging opnieuw</a>
                     </p>
                 </div>
             </form>
         </section>
     </div>
+   
 </div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
 
-<style>
-    .filler {
-        height: 10vw;
-        margin-top: 100px;
-    }
-</style>

@@ -2,7 +2,7 @@
 
 namespace ZMDH_WebApp.Migrations
 {
-    public partial class lmao4 : Migration
+    public partial class lel2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

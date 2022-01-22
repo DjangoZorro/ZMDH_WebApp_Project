@@ -12,22 +12,22 @@ using ZMDH_WebApp.Models;
 namespace ZMDH_WebApp.Controllers
 {
     [Authorize]
-    public class GuardianController : Controller
+    public class TherapyController : Controller
     {
         private readonly DBManager _context;
 
-        public GuardianController(DBManager context)
+        public TherapyController(DBManager context)
         {
             _context = context;
         }
 
-        // GET: Guardian
+        // GET: Therapy
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Guardians.ToListAsync());
+            return View(await _context.Therapies.ToListAsync());
         }
 
-        // GET: Guardian/Details/5
+        // GET: Therapy/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,39 +35,39 @@ namespace ZMDH_WebApp.Controllers
                 return NotFound();
             }
 
-            var guardian = await _context.Guardians
+            var therapy = await _context.Therapies
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (guardian == null)
+            if (therapy == null)
             {
                 return NotFound();
             }
 
-            return View(guardian);
+            return View(therapy);
         }
 
-        // GET: Guardian/Create
+        // GET: Therapy/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Guardian/Create
+        // POST: Therapy/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,name")] Guardian guardian)
+        public async Task<IActionResult> Create([Bind("Id,ClientId,PedagoogId")] Therapy therapy)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(guardian);
+                _context.Add(therapy);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(guardian);
+            return View(therapy);
         }
 
-        // GET: Guardian/Edit/5
+        // GET: Therapy/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -75,22 +75,22 @@ namespace ZMDH_WebApp.Controllers
                 return NotFound();
             }
 
-            var guardian = await _context.Guardians.FindAsync(id);
-            if (guardian == null)
+            var therapy = await _context.Therapies.FindAsync(id);
+            if (therapy == null)
             {
                 return NotFound();
             }
-            return View(guardian);
+            return View(therapy);
         }
 
-        // POST: Guardian/Edit/5
+        // POST: Therapy/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,name")] Guardian guardian)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ClientId,PedagoogId")] Therapy therapy)
         {
-            if (id != guardian.Id)
+            if (id != therapy.Id)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace ZMDH_WebApp.Controllers
             {
                 try
                 {
-                    _context.Update(guardian);
+                    _context.Update(therapy);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GuardianExists(guardian.Id))
+                    if (!TherapyExists(therapy.Id))
                     {
                         return NotFound();
                     }
@@ -115,10 +115,10 @@ namespace ZMDH_WebApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(guardian);
+            return View(therapy);
         }
 
-        // GET: Guardian/Delete/5
+        // GET: Therapy/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -126,30 +126,30 @@ namespace ZMDH_WebApp.Controllers
                 return NotFound();
             }
 
-            var guardian = await _context.Guardians
+            var therapy = await _context.Therapies
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (guardian == null)
+            if (therapy == null)
             {
                 return NotFound();
             }
 
-            return View(guardian);
+            return View(therapy);
         }
 
-        // POST: Guardian/Delete/5
+        // POST: Therapy/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var guardian = await _context.Guardians.FindAsync(id);
-            _context.Guardians.Remove(guardian);
+            var therapy = await _context.Therapies.FindAsync(id);
+            _context.Therapies.Remove(therapy);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool GuardianExists(int id)
+        private bool TherapyExists(int id)
         {
-            return _context.Guardians.Any(e => e.Id == id);
+            return _context.Therapies.Any(e => e.Id == id);
         }
     }
 }
