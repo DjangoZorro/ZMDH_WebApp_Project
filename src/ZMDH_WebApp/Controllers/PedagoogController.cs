@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using ZMDH_WebApp.Models;
 
 namespace ZMDH_WebApp.Controllers
 {
+    [Authorize]
     public class PedagoogController : Controller
     {
         private readonly DBManager _context;
@@ -20,9 +22,43 @@ namespace ZMDH_WebApp.Controllers
         }
 
         // GET: Pedagoog
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
-            return View(await _context.Pedagogen.ToListAsync());
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["SpecSortParm"] = String.IsNullOrEmpty(sortOrder) ? "spec_desc" : "";
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "naam_desc" : "";
+            ViewData["EmailSortParm"] = String.IsNullOrEmpty(sortOrder) ? "email_desc" : "";
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+            var pedagogen = from x in _context.Pedagogen select x;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                pedagogen = pedagogen.Where(s => s.name.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    pedagogen = pedagogen.OrderBy(s => s.name);
+                    break;
+                case "achternaam_desc":
+                    pedagogen = pedagogen.OrderBy(s => s.Email);
+                    break;
+                default:
+                    pedagogen = pedagogen.OrderBy(s => s.Specialization);
+                    break;
+            }
+            int pageSize = 5;
+
+            return View(await PaginatedList<Pedagoog>.CreateAsync(pedagogen.Include(x => x.Therapy).AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
         // GET: Pedagoog/Details/5
