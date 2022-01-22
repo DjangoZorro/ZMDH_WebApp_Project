@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.SignalR;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using ZMDH_WebApp.Models;
 
-namespace SignalRChat.Hubs
+namespace SignalR.Hubs
 {
     public class ChatHub : Hub
     {

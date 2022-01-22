@@ -1,13 +1,17 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ZMDH_WebApp.Models
 {
-    public class Praktijk
+    public class Condition
     {
         [Key]
         public int Id { get; set; }
+        
         public string Naam { get; set; }
-        public string Plaats { get; set; }
-        public string Adres { get; set; }
+
+        public IList<Client> Clienten { get; set; }
+
+        public IList<Entry> Entries { get; set; }
     }
 }

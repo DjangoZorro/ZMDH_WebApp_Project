@@ -23,6 +23,18 @@ namespace ZMDH_WebApp.Data
         //     base.OnModelCreating(builder);
         // }
 
-        public DbSet<Praktijk> Praktijken { get; set; }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
+
+        public DbSet<Client> Clienten { get; set; }
+        public DbSet<Condition> Conditions { get; set; }
+        public DbSet<Guardian> Guardians { get; set; }
+        public DbSet<Pedagoog> Pedagogen { get; set; }
+        public DbSet<Entry> Entries { get; set; }
+        public DbSet<Moderator> Moderators { get; set; }
+        public DbSet<SelfHelpGroup> SelfHelpGroups { get; set; }
+        public DbSet<Therapy> Therapies { get; set; }
     }
 }

@@ -38,6 +38,21 @@ namespace ZMDH_WebApp.Controllers
         {
             return View();
         }
+        
+        public IActionResult OverOns()
+        {
+            return View();
+        }
+
+        public IActionResult Klachten()
+        {
+            return View();
+        }
+        
+        public IActionResult FAQ()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
