@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -15,10 +16,12 @@ namespace ZMDH_WebApp.Controllers
     public class PedagoogController : Controller
     {
         private readonly DBManager _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public PedagoogController(DBManager context)
+        public PedagoogController(DBManager context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Pedagoog
@@ -46,10 +49,10 @@ namespace ZMDH_WebApp.Controllers
             }
             switch (sortOrder)
             {
-                case "name_desc":
+                case "naam_desc":
                     pedagogen = pedagogen.OrderBy(s => s.name);
                     break;
-                case "achternaam_desc":
+                case "email_desc":
                     pedagogen = pedagogen.OrderBy(s => s.Email);
                     break;
                 default:
@@ -99,6 +102,34 @@ namespace ZMDH_WebApp.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(pedagoog);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GenerateAccount()
+        {
+            var currentPedagoog = await _userManager.GetUserAsync(HttpContext.User);
+
+            bool Found = false;
+            foreach (var item in _userManager.Users)
+            {
+                if(item.GetType().Name.Equals("Pedagoog") && currentPedagoog.Email.Equals(item.Email)) {
+                    Found = true;
+                }
+            }
+
+            if(!Found)
+            {
+                var newPedagoog = new Pedagoog {
+                    UserName = currentPedagoog.UserName,
+                    PasswordHash = currentPedagoog.PasswordHash,
+                    PhoneNumber = currentPedagoog.PhoneNumber,
+                    Email = currentPedagoog.Email
+                };
+                _context.Add(newPedagoog);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Pedagoog/Edit/5
