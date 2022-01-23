@@ -8,6 +8,9 @@
           "build/netstandard1.0/coverlet.collector.targets": {}
         }
       },
+      "FontAwesome/4.7.0": {
+        "type": "package"
+      },
       "Humanizer.Core/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -18,6 +21,30 @@
         },
         "runtime": {
           "lib/netstandard1.0/Humanizer.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Identity.Core/2.2.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Microsoft.AspNet.Identity.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.AspNet.Identity.Core.dll": {}
+        }
+      },
+      "Microsoft.AspNet.SignalR/2.4.2": {
+        "type": "package"
+      },
+      "Microsoft.AspNet.SignalR.Client/2.4.2": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNet.SignalR.Client.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNet.SignalR.Client.dll": {}
         }
       },
       "Microsoft.AspNetCore.Cryptography.Internal/5.0.0": {
@@ -3280,6 +3307,11 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
+          "FontAwesome": "4.7.0",
+          "Microsoft.AspNet.Identity.Core": "2.2.3",
+          "Microsoft.AspNet.SignalR": "2.4.2",
+          "Microsoft.AspNet.SignalR.Client": "2.4.2",
+          "Microsoft.AspNet.SignalR.Hubs": "0.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.0",
           "Microsoft.AspNetCore.Identity.UI": "5.0.0",
           "Microsoft.EntityFrameworkCore.InMemory": "5.0.0",
@@ -3287,7 +3319,7 @@
           "Microsoft.EntityFrameworkCore.Sqlite": "5.0.0",
           "Microsoft.Owin": "4.2.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "5.0.0",
-          "Owin": "0.0.0"
+          "Owin": "1.0.0"
         },
         "compile": {
           "bin/placeholder/ZMDH_WebApp.dll": {}
@@ -3353,6 +3385,27 @@
         "coverlet.collector.nuspec"
       ]
     },
+    "FontAwesome/4.7.0": {
+      "sha512": "n4H/brfszElyoZ4kmGh8E75uqvLzLvFr3h2PFVdPH1LwUmWIpeqdaW2pcC4oZAhg7sESyObh0IZpAI8COCNeUg==",
+      "type": "package",
+      "path": "fontawesome/4.7.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Content/font-awesome.css",
+        "Content/Content/font-awesome.min.css",
+        "Content/fonts/FontAwesome.otf",
+        "Content/fonts/fontawesome-webfont.eot",
+        "Content/fonts/fontawesome-webfont.svg",
+        "Content/fonts/fontawesome-webfont.ttf",
+        "Content/fonts/fontawesome-webfont.woff",
+        "Content/fonts/fontawesome-webfont.woff2",
+        "fontawesome.4.7.0.nupkg.sha512",
+        "fontawesome.nuspec",
+        "tools/install.ps1"
+      ]
+    },
     "Humanizer.Core/2.2.0": {
       "sha512": "rsYXB7+iUPP8AHgQ8JP2UZI2xK2KhjcdGr9E6zX3CsZaTLCaw8M35vaAJRo1rfxeaZEVMuXeaquLVCkZ7JcZ5Q==",
       "type": "package",
@@ -3363,6 +3416,55 @@
         "humanizer.core.2.2.0.nupkg.sha512",
         "humanizer.core.nuspec",
         "lib/netstandard1.0/Humanizer.dll"
+      ]
+    },
+    "Microsoft.AspNet.Identity.Core/2.2.3": {
+      "sha512": "Mv5FpoaxspE8hlWLE4r1IdZtovg/OyFgVRhxQbx47J4sqdLImN1hnM1lnwCj+/wLmqtqFk/RYMoZ5GAcwm/00g==",
+      "type": "package",
+      "path": "microsoft.aspnet.identity.core/2.2.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Microsoft.AspNet.Identity.Core.dll",
+        "lib/net45/Microsoft.AspNet.Identity.Core.xml",
+        "microsoft.aspnet.identity.core.2.2.3.nupkg.sha512",
+        "microsoft.aspnet.identity.core.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.SignalR/2.4.2": {
+      "sha512": "8NAm5wmNP+NkqnKqFKWcj7F2JMaQSsqDq5Nx3LnaMmJgHsHYiCx3hAXzXo+047AcJCtYyAvVRUyjWS4NIpEn2A==",
+      "type": "package",
+      "path": "microsoft.aspnet.signalr/2.4.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "microsoft.aspnet.signalr.2.4.2.nupkg.sha512",
+        "microsoft.aspnet.signalr.nuspec",
+        "packageIcon.png"
+      ]
+    },
+    "Microsoft.AspNet.SignalR.Client/2.4.2": {
+      "sha512": "BxTd9IUCvs9ijEvTOd7jlZH1flsbBiyuG+o2yINmHLkO63FZPC/g/AA5zEOBimUE0qnbZpdmg5lwSAlBHXl9IA==",
+      "type": "package",
+      "path": "microsoft.aspnet.signalr.client/2.4.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/Microsoft.AspNet.SignalR.Client.dll",
+        "lib/net40/Microsoft.AspNet.SignalR.Client.pdb",
+        "lib/net40/Microsoft.AspNet.SignalR.Client.xml",
+        "lib/net45/Microsoft.AspNet.SignalR.Client.dll",
+        "lib/net45/Microsoft.AspNet.SignalR.Client.pdb",
+        "lib/net45/Microsoft.AspNet.SignalR.Client.xml",
+        "lib/netstandard1.3/Microsoft.AspNet.SignalR.Client.dll",
+        "lib/netstandard1.3/Microsoft.AspNet.SignalR.Client.pdb",
+        "lib/netstandard1.3/Microsoft.AspNet.SignalR.Client.xml",
+        "lib/netstandard2.0/Microsoft.AspNet.SignalR.Client.dll",
+        "lib/netstandard2.0/Microsoft.AspNet.SignalR.Client.pdb",
+        "lib/netstandard2.0/Microsoft.AspNet.SignalR.Client.xml",
+        "microsoft.aspnet.signalr.client.2.4.2.nupkg.sha512",
+        "microsoft.aspnet.signalr.client.nuspec",
+        "packageIcon.png"
       ]
     },
     "Microsoft.AspNetCore.Cryptography.Internal/5.0.0": {
@@ -10464,34 +10566,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\aresx\\.nuget\\packages\\": {}
+    "C:\\Users\\Djelies\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aresx\\OneDrive\\Bureaublad\\ZMDH\\ZMDH_WebApp_Project\\test\\ZMDH_WebApp.Test\\ZMDH_WebApp.Test.csproj",
+      "projectUniqueName": "d:\\IdeaProjects\\ZMDH_WebApp_Project\\test\\ZMDH_WebApp.Test\\ZMDH_WebApp.Test.csproj",
       "projectName": "ZMDH_WebApp.Test",
-      "projectPath": "C:\\Users\\aresx\\OneDrive\\Bureaublad\\ZMDH\\ZMDH_WebApp_Project\\test\\ZMDH_WebApp.Test\\ZMDH_WebApp.Test.csproj",
-      "packagesPath": "C:\\Users\\aresx\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aresx\\OneDrive\\Bureaublad\\ZMDH\\ZMDH_WebApp_Project\\test\\ZMDH_WebApp.Test\\obj\\",
+      "projectPath": "d:\\IdeaProjects\\ZMDH_WebApp_Project\\test\\ZMDH_WebApp.Test\\ZMDH_WebApp.Test.csproj",
+      "packagesPath": "C:\\Users\\Djelies\\.nuget\\packages\\",
+      "outputPath": "d:\\IdeaProjects\\ZMDH_WebApp_Project\\test\\ZMDH_WebApp.Test\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\aresx\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Djelies\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\aresx\\OneDrive\\Bureaublad\\ZMDH\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj": {
-              "projectPath": "C:\\Users\\aresx\\OneDrive\\Bureaublad\\ZMDH\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj"
+            "d:\\IdeaProjects\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj": {
+              "projectPath": "d:\\IdeaProjects\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj"
             }
           }
         }
@@ -10547,6 +10647,25 @@
     }
   },
   "logs": [
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package Microsoft.AspNet.SignalR.Hubs. No packages exist with this id in source(s): nuget.org",
+      "libraryId": "Microsoft.AspNet.SignalR.Hubs",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNet.Identity.Core 2.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.AspNet.Identity.Core",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    },
     {
       "code": "NU1701",
       "level": "Warning",

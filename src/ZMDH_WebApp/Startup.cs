@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using ZMDH_WebApp.Data;
-using SignalR.Hubs;
+using SignalRChat.Hubs;
 
 namespace ZMDH_WebApp
 {

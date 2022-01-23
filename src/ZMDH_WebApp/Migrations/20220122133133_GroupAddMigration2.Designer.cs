@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ZMDH_WebApp.Data;
 
 namespace ZMDH_WebApp.Migrations
 {
     [DbContext(typeof(DBManager))]
-    partial class DBManagerModelSnapshot : ModelSnapshot
+    [Migration("20220122133133_GroupAddMigration2")]
+    partial class GroupAddMigration2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -353,13 +355,13 @@ namespace ZMDH_WebApp.Migrations
                     b.Property<int>("ConditionId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("GuardianId")
+                    b.Property<int>("GuardianId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("SelfHelpGroupId")
+                    b.Property<int>("SelfHelpGroupId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("TherapyId")
+                    b.Property<int>("TherapyId")
                         .HasColumnType("INTEGER");
 
                     b.HasIndex("ConditionId");
@@ -391,7 +393,7 @@ namespace ZMDH_WebApp.Migrations
                     b.Property<string>("Specialization")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("TherapyId")
+                    b.Property<int>("TherapyId")
                         .HasColumnType("INTEGER")
                         .HasColumnName("Pedagoog_TherapyId");
 
@@ -483,15 +485,21 @@ namespace ZMDH_WebApp.Migrations
 
                     b.HasOne("ZMDH_WebApp.Models.Guardian", "Guardian")
                         .WithMany("client")
-                        .HasForeignKey("GuardianId");
+                        .HasForeignKey("GuardianId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ZMDH_WebApp.Models.SelfHelpGroup", "SelfHelpGroup")
                         .WithMany("Clienten")
-                        .HasForeignKey("SelfHelpGroupId");
+                        .HasForeignKey("SelfHelpGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ZMDH_WebApp.Models.Therapy", "Therapy")
                         .WithOne("Clienten")
-                        .HasForeignKey("ZMDH_WebApp.Models.Client", "TherapyId");
+                        .HasForeignKey("ZMDH_WebApp.Models.Client", "TherapyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Condition");
 
@@ -506,7 +514,9 @@ namespace ZMDH_WebApp.Migrations
                 {
                     b.HasOne("ZMDH_WebApp.Models.Therapy", "Therapy")
                         .WithMany("Pedagogen")
-                        .HasForeignKey("TherapyId");
+                        .HasForeignKey("TherapyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Therapy");
                 });
