@@ -258,9 +258,19 @@ body {
 .userInputLabel {
     background-color: transparent;
     border: none;
-    color: white;
     font-family: sans-serif;
 }
+
+
+.btn-chat{
+    color: black;
+    background-color: #d1a1a1 !important;
+   
+  }
+
+  .btn-chat:hover {
+    color:#000;
+  }
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .portlet-body {

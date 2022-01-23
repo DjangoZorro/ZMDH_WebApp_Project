@@ -1,18 +1,32 @@
-@{
+@model IEnumerable<ZMDH_WebApp.Models.SelfHelpGroup>
+
+@if (User.Identity.IsAuthenticated)
+{
     ViewData["Title"] = "Chat";
+}else{
+    ViewData["Title"] = "Deze pagina is allen beschibaar als u bent ingelogd";
 }
+
+
+@* using (var context = new groupChats())
+{
+    var groupChats = context.groupChats.ToList();
+} *@
 <link rel="stylesheet" href="~/css/chatPopup.css" />
 <h1>@ViewData["Title"]</h1>
 
 @* Chat *@
 
+@if (User.Identity.IsAuthenticated)
+{
+   
 
-
-<div class="d-flex flex-row justify-content-between p-3 adiv text-white"> <i class="fa fa-chevron-left back"
-        name="back"></i>
-    <span class="pb-3">Live chat</span> <input id="temp" type="text" value='anoniem'
+<div class="d-flex flex-row justify-content-between p-3 adiv text-black"> <a class="fa fa-chevron-left back"
+        name="back" id="leave-group" style="text-decoration: none; color:black !important;"> Verlaat Groep</a>
+    <span class="pb-3">Live chat</span> 
+    <input id="temp" type="text" value='anoniem'
         style="visibility: hidden; position: absolute;" disabled readonly>
-    <input class="userInputLabel" id="userInput" type="text" value=@User.Identity.Name
+    <input class="userInputLabel text-black" id="userInput" type="text" value=@User.Identity.Name
         aria-label="Disabled input example" disabled readonly>
 </div>
 
@@ -26,21 +40,13 @@
                 <div class="d-flex flex-row justify-content-between adivbox text-black">
                     <div class="col chatxscroll" id="">
 
-                        <div class="contentGroups" id="">
-                            <p>Zelfhulpgroep1</p>
-                        </div>
-                        <div class="contentGroups">
-                            <p>Zelfhulpgroep2</p>
-                        </div>
-                        <div class="contentGroups">
-                            <p>Zelfhulpgroep3</p>
-                        </div>
-                        <div class="contentGroups">
-                            <p>Zelfhulpgroep4</p>
-                        </div>
-                        <div class="contentGroups">
-                            <p>Zelfhulpgroep5</p>
-                        </div>
+    
+@foreach (var item in Model) {
+        <div class="contentGroups" id="join-group">
+               <p id="" >@Html.DisplayFor(modelItem => item.Title)</p>
+               <a id="group-name" asp-route-id="@item.Title">Join</a>
+            </div>
+}
 
                     </div>
                 </div>
@@ -49,31 +55,12 @@
         </div>
         <div class="col-sm-10 chatxscroll">
             <div class="portlet-body chat-widget"
-                style="overflow-y: scroll; overflow-y: auto; width: auto; height: 300px;">
+                style="overflow-y: scroll; overflow-y: auto; width: auto; height: 300px; background-color: white;">
 
-                <div class="d-flex flex-row justify-content-between p-3 adivbox text-black">
+                <div class="d-flex flex-row justify-content-between p-3 adivbox text-black" style="">
                     <div class="col" id="messagesList">
 
-                        <div class="d-flex flex-row p-3">
-                            <div class="chat ml-2 p-3">Hello and thankyou for visiting birdlymind. Please click the
-                                video above</div>
-                        </div>
-                        <div class="d-flex flex-row p-3">
-                            <div class="bg-white mr-2 p-3"><span class="text-muted">Hello and thankyou for visiting
-                                    birdlynind.</span></div> <img
-                                src="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-7.png"
-                                width="30" height="30">
-                        </div>
-                        <div class="d-flex flex-row p-3"> <img
-                                src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-7.png"
-                                width="30" height="30">
-                            <div class="myvideo ml-2"><img src="https://imgur.com/GOxU1jx.png" width="200"></div>
-                        </div>
-                        <div class="d-flex flex-row p-3"> <img
-                                src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-7.png"
-                                width="30" height="30">
-                            <div class="chat ml-2 p-3"><span class="text-muted dot">. . .</span></div>
-                        </div>
+                
 
                     </div>
                 </div>
@@ -85,7 +72,7 @@
 
     <div class="form-group px-3 sendbox"> <textarea class="form-control" id="messageInput" rows="5"
             placeholder="Typ uw bericht"></textarea>
-        <input type="button" class="btn btn-sm btn-primary send" id="sendButton" value="Stuur bericht" />
+        <input type="button" class="btn btn-sm btn-chat send" id="sendButton" value="Stuur bericht" />
         <label for="anoniem" style="font-size: 20px;">Bericht anoniem versturen&nbsp;</label><input type="checkbox"
             id="anoniem" name="anoniem" value="false" onclick="anoniem()">
         <br>
@@ -97,11 +84,13 @@
 <input type="button" class="btn btn-sm btn-primary send" id="leave-group" value="leave" />
 <input type="button" class="btn btn-sm btn-primary send" id="dend" value="Stuur bericht" />
 
-<input class="userInputLabel" id="group-name" type="text" value="testgroup" aria-label="Disabled input example" disabled
-    readonly>
+
 <input class="userInputLabel" id="group-message-text" type="text" value="testbericht"
     aria-label="Disabled input example" disabled readonly>
-
+ 
+}else{
+    
+}
 
 @* test *@
 
@@ -113,8 +102,5 @@
 <script src="~/js/chatPopup.js"></script>
 
 <script type="text/javascript">
-    var i = 0;
-    $('.back').click(function () {
-        console.log("sdfsd");
-    });
+   
 </script>

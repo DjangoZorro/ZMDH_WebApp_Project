@@ -6,17 +6,28 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ZMDH_WebApp.Models;
+using System.IO;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using Microsoft.EntityFrameworkCore;
+using ZMDH_WebApp.Data;
+
 
 namespace ZMDH_WebApp.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly DBManager _context;
 
-        public HomeController(ILogger<HomeController> logger)
+
+        public HomeController(ILogger<HomeController> logger,DBManager context)
         {
             _logger = logger;
+            _context = context;
         }
+
 
         public IActionResult Index()
         {
@@ -29,9 +40,12 @@ namespace ZMDH_WebApp.Controllers
         }
 
 
-        public IActionResult Chat()
+
+
+        // GET: Home/Chat
+        public async Task<IActionResult> Chat()
         {
-            return View();
+            return View(await _context.SelfHelpGroups.ToListAsync());
         }
 
         public IActionResult Contact()
@@ -59,6 +73,13 @@ namespace ZMDH_WebApp.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+//         public ActionResult storeList()
+// {     
+//     SelfHelpGroup obj=new SelfHelpGroup();
+//     obj.MySelfHelpGroup = new List<SelfHelpGroup>();// Load your list using uery  
+//     return View(obj);
+// }
 
     }
 }
