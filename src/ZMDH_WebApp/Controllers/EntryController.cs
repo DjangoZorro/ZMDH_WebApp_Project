@@ -2,9 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using ZMDH_WebApp.Data;
 using ZMDH_WebApp.Models;
 
@@ -13,6 +16,14 @@ namespace ZMDH_WebApp.Controllers
     public class EntryController : Controller
     {
         private readonly DBManager _context;
+        private readonly UserManager<IdentityUser> _userManager;
+
+        [ActivatorUtilitiesConstructor]
+        public EntryController(DBManager context, UserManager<IdentityUser> userManager)
+        {
+            _context = context;
+            _userManager = userManager;
+        }
 
         public EntryController(DBManager context)
         {
@@ -20,6 +31,7 @@ namespace ZMDH_WebApp.Controllers
         }
 
         // GET: Entry
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var dBManager = _context.Entries.Include(e => e.Condition);
@@ -27,6 +39,7 @@ namespace ZMDH_WebApp.Controllers
         }
 
         // GET: Entry/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -69,7 +82,25 @@ namespace ZMDH_WebApp.Controllers
             return View(entry);
         }
 
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> GenerateAccount(EntryGenerateModel entryGenerateModel)
+        {
+            Entry entry = _context.Entries.Single(a => a.Id == entryGenerateModel.Id);
+            var user = new Client
+            {
+                UserName = entry.EmailAddress,
+                Email = entry.EmailAddress,
+                ConditionId = entry.ConditionId
+            };
+
+            await _userManager.CreateAsync(user, "Test123!");
+
+            return RedirectToAction(nameof(Index));
+        }
+
         // GET: Entry/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -91,6 +122,7 @@ namespace ZMDH_WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,FullName,BirthDate,ZipCode,CityName,HouseNumber,PhoneNumber,EmailAddress,ConditionId,ConsentOfGuardian,GuardianName,EmailAddressGuardian")] Entry entry)
         {
             if (id != entry.Id)
@@ -123,6 +155,7 @@ namespace ZMDH_WebApp.Controllers
         }
 
         // GET: Entry/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -144,6 +177,7 @@ namespace ZMDH_WebApp.Controllers
         // POST: Entry/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var entry = await _context.Entries.FindAsync(id);

@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -65,19 +65,18 @@
                             <ul class="navbar-nav flex-grow-1">
                                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="OverOns">Over ons</a></li>
-                                 @if (User.Identity.IsAuthenticated )
-                                {
-                                    
-                                }else{
-                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Entry" asp-action="Create">Aanmelden</a></li>
-                                }
-                                
-                                
                                 @if (User.Identity.IsAuthenticated )
                                 {
                                      <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Chat">Chat</a></li>
                                 }
                                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="FAQ">FAQs</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Pedagoog" asp-action="Overview">Pedagogen overzicht</a></li>
+                                @if (!User.Identity.IsAuthenticated) {
+                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Entry" asp-action="Create">Aanmelden</a></li>
+                                }
+                                @if (User.Identity.IsAuthenticated) {
+                                    <li class="nav-item"><a class="nav-link px-4 block" asp-area="" asp-controller="Pedagoog" asp-action="GenerateAccount">Meld je als Pedagoog!</a></li>
+                                }
                             </ul>
                         </div>
                         <partial name="_LoginPartial" />

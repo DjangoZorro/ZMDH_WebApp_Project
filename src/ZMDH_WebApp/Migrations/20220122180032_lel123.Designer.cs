@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ZMDH_WebApp.Data;
 
 namespace ZMDH_WebApp.Migrations
 {
     [DbContext(typeof(DBManager))]
-    partial class DBManagerModelSnapshot : ModelSnapshot
+    [Migration("20220122180032_lel123")]
+    partial class lel123
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -324,28 +326,6 @@ namespace ZMDH_WebApp.Migrations
                     b.ToTable("Therapies");
                 });
 
-            modelBuilder.Entity("ZMDH_WebApp.Models.groupChats", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Memory")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("groupChatsId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("groupChatsId");
-
-                    b.ToTable("groupChats");
-                });
-
             modelBuilder.Entity("ZMDH_WebApp.Models.Client", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
@@ -391,7 +371,7 @@ namespace ZMDH_WebApp.Migrations
                     b.Property<string>("Specialization")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("TherapyId")
+                    b.Property<int>("TherapyId")
                         .HasColumnType("INTEGER")
                         .HasColumnName("Pedagoog_TherapyId");
 
@@ -466,13 +446,6 @@ namespace ZMDH_WebApp.Migrations
                     b.Navigation("Condition");
                 });
 
-            modelBuilder.Entity("ZMDH_WebApp.Models.groupChats", b =>
-                {
-                    b.HasOne("ZMDH_WebApp.Models.groupChats", null)
-                        .WithMany("MygroupChats")
-                        .HasForeignKey("groupChatsId");
-                });
-
             modelBuilder.Entity("ZMDH_WebApp.Models.Client", b =>
                 {
                     b.HasOne("ZMDH_WebApp.Models.Condition", "Condition")
@@ -506,7 +479,9 @@ namespace ZMDH_WebApp.Migrations
                 {
                     b.HasOne("ZMDH_WebApp.Models.Therapy", "Therapy")
                         .WithMany("Pedagogen")
-                        .HasForeignKey("TherapyId");
+                        .HasForeignKey("TherapyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Therapy");
                 });
@@ -533,11 +508,6 @@ namespace ZMDH_WebApp.Migrations
                     b.Navigation("Clienten");
 
                     b.Navigation("Pedagogen");
-                });
-
-            modelBuilder.Entity("ZMDH_WebApp.Models.groupChats", b =>
-                {
-                    b.Navigation("MygroupChats");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,4 +1,4 @@
-@model IEnumerable<ZMDH_WebApp.Models.Pedagoog>
+@model PaginatedList<ZMDH_WebApp.Models.Pedagoog>
 
 @{
     ViewData["Title"] = "Index";
@@ -9,23 +9,37 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Zoek Naam: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-action="Index">Terug naar lijst</a>
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.name)
+                <a asp-action="Index" asp-route-sortOrder='@ViewData["NameSortParm"]' asp-route-currentFilter='@ViewData["CurrentFilter"]'>Naam</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Specialization)
+                <a asp-action="Index" asp-route-sortOrder='@ViewData["SpecSortParm"]' asp-route-currentFilter='@ViewData["CurrentFilter"]'>Specialisatie</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UserName)
+                Behandeling
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                Username
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
+                <a asp-action="Index" asp-route-sortOrder='@ViewData["EmailSortParm"]' asp-route-currentFilter='@ViewData["CurrentFilter"]'>E-Mail</a>
+            </th>
+            <th>
+                Telefoonnummer
             </th>
             <th></th>
         </tr>
@@ -40,6 +54,9 @@
                 @Html.DisplayFor(modelItem => item.Specialization)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Therapy.Id)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>
             <td>
@@ -49,11 +66,31 @@
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Edit" asp-route-id="@item.Id">Pas aan</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Delete" asp-route-id="@item.Id">Verwijder</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Terug
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Volgende
+</a>
+<br><br><br><br><br>

@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,19 +12,56 @@ using ZMDH_WebApp.Models;
 
 namespace ZMDH_WebApp.Controllers
 {
+    [Authorize]
     public class PedagoogController : Controller
     {
         private readonly DBManager _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public PedagoogController(DBManager context)
+        public PedagoogController(DBManager context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Pedagoog
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
-            return View(await _context.Pedagogen.ToListAsync());
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["SpecSortParm"] = String.IsNullOrEmpty(sortOrder) ? "spec_desc" : "";
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "naam_desc" : "";
+            ViewData["EmailSortParm"] = String.IsNullOrEmpty(sortOrder) ? "email_desc" : "";
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+            var pedagogen = from x in _context.Pedagogen select x;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                pedagogen = pedagogen.Where(s => s.name.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "naam_desc":
+                    pedagogen = pedagogen.OrderBy(s => s.name);
+                    break;
+                case "email_desc":
+                    pedagogen = pedagogen.OrderBy(s => s.Email);
+                    break;
+                default:
+                    pedagogen = pedagogen.OrderBy(s => s.Specialization);
+                    break;
+            }
+            int pageSize = 5;
+
+            return View(await PaginatedList<Pedagoog>.CreateAsync(pedagogen.Include(x => x.Therapy).AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
         // GET: Pedagoog/Details/5
@@ -63,6 +102,34 @@ namespace ZMDH_WebApp.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(pedagoog);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GenerateAccount()
+        {
+            var currentPedagoog = await _userManager.GetUserAsync(HttpContext.User);
+
+            bool Found = false;
+            foreach (var item in _userManager.Users)
+            {
+                if(item.GetType().Name.Equals("Pedagoog") && currentPedagoog.Email.Equals(item.Email)) {
+                    Found = true;
+                }
+            }
+
+            if(!Found)
+            {
+                var newPedagoog = new Pedagoog {
+                    UserName = currentPedagoog.UserName,
+                    PasswordHash = currentPedagoog.PasswordHash,
+                    PhoneNumber = currentPedagoog.PhoneNumber,
+                    Email = currentPedagoog.Email
+                };
+                _context.Add(newPedagoog);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Pedagoog/Edit/5
@@ -148,6 +215,11 @@ namespace ZMDH_WebApp.Controllers
         private bool PedagoogExists(string id)
         {
             return _context.Pedagogen.Any(e => e.Id == id);
+        }
+
+        public async Task<IActionResult> Overview()
+        {
+            return View(await _context.Pedagogen.ToListAsync());
         }
     }
 }
