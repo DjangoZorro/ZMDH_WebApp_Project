@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -30,6 +31,7 @@ namespace ZMDH_WebApp.Controllers
         }
 
         // GET: Entry
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var dBManager = _context.Entries.Include(e => e.Condition);
@@ -37,6 +39,7 @@ namespace ZMDH_WebApp.Controllers
         }
 
         // GET: Entry/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -80,6 +83,7 @@ namespace ZMDH_WebApp.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GenerateAccount(EntryGenerateModel entryGenerateModel)
         {
             Entry entry = _context.Entries.Single(a => a.Id == entryGenerateModel.Id);
@@ -96,6 +100,7 @@ namespace ZMDH_WebApp.Controllers
         }
 
         // GET: Entry/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -117,6 +122,7 @@ namespace ZMDH_WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,FullName,BirthDate,ZipCode,CityName,HouseNumber,PhoneNumber,EmailAddress,ConditionId,ConsentOfGuardian,GuardianName,EmailAddressGuardian")] Entry entry)
         {
             if (id != entry.Id)
@@ -149,6 +155,7 @@ namespace ZMDH_WebApp.Controllers
         }
 
         // GET: Entry/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -170,6 +177,7 @@ namespace ZMDH_WebApp.Controllers
         // POST: Entry/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var entry = await _context.Entries.FindAsync(id);
