@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "abLIsd2gFML0XETZSrqsH7KFm3VjfngSosmIAe2srzSVuPfXQ+DywnjSwWvsW6DhsDxk1v72KBwQqUzkR+Fh0w==",
+  "dgSpecHash": "c+xQvdv0w0RRALhoxX10GCjwPJP9c86Og5VFPxdeV9milGDW5hBsbslxa/z2gejlrv1cFvbM8uUJAIQEyaKp8Q==",
   "success": true,
-  "projectFilePath": "c:\\Users\\aresx\\OneDrive\\Bureaublad\\ZMDH\\ZMDH_WebApp_Project\\test\\ZMDH_WebApp.Test\\ZMDH_WebApp.Test.csproj",
+  "projectFilePath": "C:\\Users\\aresx\\OneDrive\\Bureaublad\\ZMDH\\ZMDH_WebApp_Project\\test\\ZMDH_WebApp.Test\\ZMDH_WebApp.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\aresx\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",
     "C:\\Users\\aresx\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",

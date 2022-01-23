@@ -216,5 +216,10 @@ namespace ZMDH_WebApp.Controllers
         {
             return _context.Pedagogen.Any(e => e.Id == id);
         }
+
+        public async Task<IActionResult> Overview()
+        {
+            return View(await _context.Pedagogen.ToListAsync());
+        }
     }
 }

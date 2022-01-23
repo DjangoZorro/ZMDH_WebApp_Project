@@ -1,0 +1,18 @@
+@model IEnumerable<ZMDH_WebApp.Models.Pedagoog>
+
+@{
+    ViewData["Title"] = "Overzicht";
+}
+
+<h1>Overzicht</h1>
+
+@foreach (var item in Model) {
+    <div class="card" style="width: 18rem;">
+        <img src="https://img.favpng.com/7/7/2/vector-graphics-computer-icons-stock-photography-image-avatar-png-favpng-17iDDER7mFLA1by72yaK2Cfbz.jpg" class="card-img-top" alt="Pedagoog-photo">
+        <div class="card-body">
+            <h5 class="card-title">@Html.DisplayFor(modelItem => item.name)</h5>
+            <p class="card-text">@Html.DisplayFor(modelItem => item.Specialization)</p>
+            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+        </div>
+    </div><br>
+}
