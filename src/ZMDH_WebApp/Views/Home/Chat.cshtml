@@ -1,34 +1,106 @@
-@{
+@model IEnumerable<ZMDH_WebApp.Models.SelfHelpGroup>
+
+@if (User.Identity.IsAuthenticated)
+{
     ViewData["Title"] = "Chat";
+}else{
+    ViewData["Title"] = "Deze pagina is alleen beschibaar als u bent ingelogd";
 }
+
+
+@* using (var context = new groupChats())
+{
+    var groupChats = context.groupChats.ToList();
+} *@
+<link rel="stylesheet" href="~/css/chatPopup.css" />
 <h1>@ViewData["Title"]</h1>
 
-    <div class="container">
-        <div class="row">&nbsp;</div>
-        <div class="row">
-            <div class="col-2">User</div>
-            <div class="col-4"><input type="text" id="userInput" /></div>
+@* Chat *@
+
+@if (User.Identity.IsAuthenticated)
+{
+   
+
+<div class="d-flex flex-row justify-content-between p-3 adiv text-black"> <a class="fa fa-chevron-left back"
+        name="back" id="leave-group" style="text-decoration: none; color:black !important;"> Verlaat Groep</a>
+    <span class="pb-3">Live chat</span> 
+    <input id="temp" type="text" value='anoniem'
+        style="visibility: hidden; position: absolute;" disabled readonly>
+    <input class="userInputLabel text-black" id="userInput" type="text" value=@User.Identity.Name
+        aria-label="Disabled input example" disabled readonly>
+</div>
+
+<div>
+    <div class="container chatContainer">
+    <div class="row">
+        <div class="col-sm-2 chatxscroll">
+            <div class="portlet-body chat-widget"
+                style="overflow-y: scroll; overflow-y: auto; width: auto; height: 300px;">
+
+                <div class="d-flex flex-row justify-content-between adivbox text-black">
+                    <div class="col chatxscroll" id="">
+
+    
+@foreach (var item in Model) {
+        <div class="contentGroups" id="join-group">
+               <p id="" >@Html.DisplayFor(modelItem => item.Title)</p>
+               <a id="group-name" asp-route-id="@item.Title">Join</a>
+            </div>
+}
+
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <div class="row">
-            <div class="col-2">Message</div>
-            <div class="col-4"><input type="text" id="messageInput" /></div>
-        </div>
-        <div class="row">&nbsp;</div>
-        <div class="row">
-            <div class="col-6">
-                <input type="button" id="sendButton" value="Send Message" />
+        <div class="col-sm-10 chatxscroll">
+            <div class="portlet-body chat-widget"
+                style="overflow-y: scroll; overflow-y: auto; width: auto; height: 300px; background-color: white;">
+
+                <div class="d-flex flex-row justify-content-between p-3 adivbox text-black" style="">
+                    <div class="col" id="messagesList">
+
+                
+
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12">
-            <hr />
-        </div>
     </div>
-    <div class="row">
-        <div class="col-6">
-            <ul id="messagesList"></ul>
-        </div>
+
+    <div class="form-group px-3 sendbox"> <textarea class="form-control" id="messageInput" rows="5"
+            placeholder="Typ uw bericht"></textarea>
+        <input type="button" class="btn btn-sm btn-chat send" id="sendButton" value="Stuur bericht" />
+        <label for="anoniem" style="font-size: 20px;">Bericht anoniem versturen&nbsp;</label><input type="checkbox"
+            id="anoniem" name="anoniem" value="false" onclick="anoniem()">
+        <br>
     </div>
+</div>
+
+@* test *@
+<input type="button" class="btn btn-sm btn-primary send" id="join-group" value="join" />
+<input type="button" class="btn btn-sm btn-primary send" id="leave-group" value="leave" />
+<input type="button" class="btn btn-sm btn-primary send" id="dend" value="Stuur bericht" />
+
+
+<input class="userInputLabel" id="group-message-text" type="text" value="testbericht"
+    aria-label="Disabled input example" disabled readonly>
+ 
+}else{
+    
+}
+
+@* test *@
+
+@* Chat end https://bbbootstrap.com/snippets/bootstrap-live-chat-form-user-icons-13996196 *@
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/chat.js"></script>
+<script src="~/js/chatPopup.js"></script>
+
+<script type="text/javascript">
+   
+</script>

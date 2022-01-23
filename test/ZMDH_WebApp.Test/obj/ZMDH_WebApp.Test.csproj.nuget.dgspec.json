@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aresx\\OneDrive\\Bureaublad\\ZMDH\\ZMDH_WebApp_Project\\test\\ZMDH_WebApp.Test\\ZMDH_WebApp.Test.csproj": {}
+    "d:\\IdeaProjects\\ZMDH_WebApp_Project\\test\\ZMDH_WebApp.Test\\ZMDH_WebApp.Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aresx\\OneDrive\\Bureaublad\\ZMDH\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj": {
+    "d:\\IdeaProjects\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aresx\\OneDrive\\Bureaublad\\ZMDH\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj",
+        "projectUniqueName": "d:\\IdeaProjects\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj",
         "projectName": "ZMDH_WebApp",
-        "projectPath": "C:\\Users\\aresx\\OneDrive\\Bureaublad\\ZMDH\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj",
-        "packagesPath": "C:\\Users\\aresx\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aresx\\OneDrive\\Bureaublad\\ZMDH\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\obj\\",
+        "projectPath": "d:\\IdeaProjects\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj",
+        "packagesPath": "C:\\Users\\Djelies\\.nuget\\packages\\",
+        "outputPath": "d:\\IdeaProjects\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\aresx\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Djelies\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -40,6 +38,26 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "FontAwesome": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            },
+            "Microsoft.AspNet.Identity.Core": {
+              "target": "Package",
+              "version": "[2.2.3, )"
+            },
+            "Microsoft.AspNet.SignalR": {
+              "target": "Package",
+              "version": "[2.4.2, )"
+            },
+            "Microsoft.AspNet.SignalR.Client": {
+              "target": "Package",
+              "version": "[2.4.2, )"
+            },
+            "Microsoft.AspNet.SignalR.Hubs": {
+              "target": "Package",
+              "version": "[*, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.0, )"
@@ -82,7 +100,7 @@
             },
             "Owin": {
               "target": "Package",
-              "version": "[*, )"
+              "version": "[1.0.0, )"
             }
           },
           "imports": [
@@ -107,32 +125,30 @@
         }
       }
     },
-    "C:\\Users\\aresx\\OneDrive\\Bureaublad\\ZMDH\\ZMDH_WebApp_Project\\test\\ZMDH_WebApp.Test\\ZMDH_WebApp.Test.csproj": {
+    "d:\\IdeaProjects\\ZMDH_WebApp_Project\\test\\ZMDH_WebApp.Test\\ZMDH_WebApp.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aresx\\OneDrive\\Bureaublad\\ZMDH\\ZMDH_WebApp_Project\\test\\ZMDH_WebApp.Test\\ZMDH_WebApp.Test.csproj",
+        "projectUniqueName": "d:\\IdeaProjects\\ZMDH_WebApp_Project\\test\\ZMDH_WebApp.Test\\ZMDH_WebApp.Test.csproj",
         "projectName": "ZMDH_WebApp.Test",
-        "projectPath": "C:\\Users\\aresx\\OneDrive\\Bureaublad\\ZMDH\\ZMDH_WebApp_Project\\test\\ZMDH_WebApp.Test\\ZMDH_WebApp.Test.csproj",
-        "packagesPath": "C:\\Users\\aresx\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aresx\\OneDrive\\Bureaublad\\ZMDH\\ZMDH_WebApp_Project\\test\\ZMDH_WebApp.Test\\obj\\",
+        "projectPath": "d:\\IdeaProjects\\ZMDH_WebApp_Project\\test\\ZMDH_WebApp.Test\\ZMDH_WebApp.Test.csproj",
+        "packagesPath": "C:\\Users\\Djelies\\.nuget\\packages\\",
+        "outputPath": "d:\\IdeaProjects\\ZMDH_WebApp_Project\\test\\ZMDH_WebApp.Test\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\aresx\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Djelies\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\aresx\\OneDrive\\Bureaublad\\ZMDH\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj": {
-                "projectPath": "C:\\Users\\aresx\\OneDrive\\Bureaublad\\ZMDH\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj"
+              "d:\\IdeaProjects\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj": {
+                "projectPath": "d:\\IdeaProjects\\ZMDH_WebApp_Project\\src\\ZMDH_WebApp\\ZMDH_WebApp.csproj"
               }
             }
           }

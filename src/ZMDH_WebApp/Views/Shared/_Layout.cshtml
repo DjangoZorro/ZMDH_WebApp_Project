@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - ZMDH_WebApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <style>
@@ -64,6 +65,10 @@
                             <ul class="navbar-nav flex-grow-1">
                                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="OverOns">Over ons</a></li>
+                                @if (User.Identity.IsAuthenticated )
+                                {
+                                     <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Chat">Chat</a></li>
+                                }
                                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="FAQ">FAQs</a></li>
                                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Pedagoog" asp-action="Overview">Pedagogen overzicht</a></li>
                                 @if (!User.Identity.IsAuthenticated) {

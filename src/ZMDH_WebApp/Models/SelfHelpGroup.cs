@@ -13,5 +13,6 @@ namespace ZMDH_WebApp.Models
         public string Title { get; set; }
 
         public IList<Client> Clienten { get; set; }
+    
     }
 }
