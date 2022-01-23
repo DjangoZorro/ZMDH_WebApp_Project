@@ -7,9 +7,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using ZMDH_WebApp.Areas.Identity.Pages.Account;
-using Moq;
 
 namespace ZMDH_WebApp.Test
 {
