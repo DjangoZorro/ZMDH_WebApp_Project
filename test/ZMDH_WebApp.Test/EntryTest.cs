@@ -28,13 +28,11 @@ namespace ZMDH_WebApp.Test
             return c;
         }
 
-
         [Fact]
         public async Task AddToDatabaseTest()
         {
             // Create database instance and controller instance.
             var context = CreateContext("0");
-            
             EntryController c = new EntryController(context);
 
             // Enumerate all entries to list.

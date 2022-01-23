@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using ZMDH_WebApp.Data;
 using ZMDH_WebApp.Models;
 
@@ -16,6 +17,7 @@ namespace ZMDH_WebApp.Controllers
         private readonly DBManager _context;
         private readonly UserManager<IdentityUser> _userManager;
 
+        [ActivatorUtilitiesConstructor]
         public EntryController(DBManager context, UserManager<IdentityUser> userManager)
         {
             _context = context;
