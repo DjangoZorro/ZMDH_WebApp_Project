@@ -34,11 +34,11 @@ namespace ZMDH_WebApp
 
             services.AddDbContext<DBManager>(options =>
             {
-                var connectionString = Configuration.GetConnectionString("DBManager");
+                var connectionString = Configuration.GetConnectionString("Default");
 
                 if (Environment.IsDevelopment())
                 {
-                    options.UseSqlite(connectionString);
+                    options.UseSqlServer(connectionString);
                 }
                 else
                 {
