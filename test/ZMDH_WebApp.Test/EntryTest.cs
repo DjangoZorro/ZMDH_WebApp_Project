@@ -7,6 +7,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using ZMDH_WebApp.Areas.Identity.Pages.Account;
+using Moq;
 
 namespace ZMDH_WebApp.Test
 {
@@ -20,16 +23,21 @@ namespace ZMDH_WebApp.Test
             c.Add(new Entry() {Id = 2, FullName = "Mary Doe", BirthDate = "01/01/2005", ZipCode = "1234AB", CityName = "Den Hague", HouseNumber = "3", PhoneNumber = "123456789", EmailAddress = "email@email.com", ConditionId = 1, GuardianName = "", EmailAddressGuardian = "", Condition = new Condition()});
             c.Add(new Entry() {Id = 3, FullName = "Jane Alison", BirthDate = "01/01/1995", ZipCode = "1234AB", CityName = "Rotterdam", HouseNumber = "5", PhoneNumber = "123456789", EmailAddress = "email@email.com", ConditionId = 1, GuardianName = "", EmailAddressGuardian = "", Condition = new Condition()});
             
+            var client = new Client() {};
+            c.Add(client);
+
             c.SaveChanges();
 
             return c;
         }
 
+
         [Fact]
-        public void AddToDatabaseTest()
+        public async Task AddToDatabaseTest()
         {
             // Create database instance and controller instance.
             var context = CreateContext("0");
+            
             EntryController c = new EntryController(context);
 
             // Enumerate all entries to list.
@@ -120,7 +128,6 @@ namespace ZMDH_WebApp.Test
             await c.DeleteConfirmed(1);
 
             Assert.Null(context.Entries.Find(1));
-            //hallo
         }
     }
 }

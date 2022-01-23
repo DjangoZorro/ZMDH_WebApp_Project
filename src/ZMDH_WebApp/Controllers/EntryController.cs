@@ -22,6 +22,11 @@ namespace ZMDH_WebApp.Controllers
             _userManager = userManager;
         }
 
+        public EntryController(DBManager context)
+        {
+            _context = context;
+        }
+
         // GET: Entry
         public async Task<IActionResult> Index()
         {
